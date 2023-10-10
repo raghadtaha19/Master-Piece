@@ -1,0 +1,89 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\LandCard;
+
+
+class LandCardSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+       
+       $landcards = [
+        [
+            'image' => 'images\zarqa.PNG',
+            'land_type' => 'Residential Land',
+            'price' => '35.000 Jd',
+            'governorate' => 'Zarqa',
+            'district' => 'Birayn',
+            'area' => '510 m2',
+            'description'=>'descriptions',
+            'additional_information'=>'additional_information',
+           
+        ],
+        [
+            'image' => 'images\madaba.PNG', 
+            'land_type' => 'Commercial Land',
+            'price' => '10.000 Jd',
+            'governorate' => 'Madaba',
+            'district' => 'Dhiban',
+            'area' => '10000 m2',
+            'description'=>'descriptions',
+            'additional_information'=>'additional_information',
+        ],
+        [
+            'image' => 'images\jerash.PNG', 
+            'land_type' => 'Agricultural Land',
+            'price' => '25.000 Jd',
+            'governorate' => 'Jerash',
+            'district' => 'Anaiba',
+            'area' => '500 m2',
+            'description'=>'descriptions',
+            'additional_information'=>'additional_information',
+        ],
+        [
+            'image' => 'images\ham.PNG',
+            'land_type' => 'Residential Land',
+            'price' => '12.345 Jd',
+            'governorate' => 'Irbid',
+            'district' => 'Ham',
+            'area' => '1000 m2',
+            'description'=>'descriptions',
+            'additional_information'=>'additional_information',
+        ],
+        [
+            'image' => 'images\Al-Qastal.PNG', 
+            'land_type' => 'Commercial Land',
+            'price' => '15.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Al-Qastal',
+            'area' => '500 m2',
+            'description'=>'descriptions',
+            'additional_information'=>'additional_information',
+        ],
+        [
+            'image' => 'images\Iraq al-Amir.PNG', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+            'description'=>'descriptions',
+            'additional_information'=>'additional_information',
+        ],
+    ];
+
+
+    foreach ($landcards as $landcard) {
+        LandCard::create($landcard);
+    }
+    }
+}
