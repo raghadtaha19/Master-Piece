@@ -38,7 +38,7 @@
 .btn.btn-primary,
 .btn.btn-secondary {
     color: #FFFFFF;
-    margin-left: 5px;
+    
 }
 
 .btn-square {
@@ -566,7 +566,7 @@
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-    width:60%;
+    width:70%;
     margin: auto;
     
   }

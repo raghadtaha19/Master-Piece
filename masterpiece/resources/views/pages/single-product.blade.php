@@ -103,7 +103,7 @@
                         </div>
                         <br><br>
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-primary py-3 px-5" href="reservation.html">Reserve Now!</a>
+                            <a class="btn btn-primary py-3 px-5" href="{{ route('reservation') }}">Reserve Now!</a>
                         </div>
                     </div>
                 </div>

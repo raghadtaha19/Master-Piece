@@ -168,8 +168,9 @@
                                         </p>
                                     </div>
                                     <div class="d-flex border-top">
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-ruler-combined text-primary me-2" ></i>{{ $item->area }}</small>
+                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2" ></i>{{ $item->area }}</small>
+                                        <small class="flex-fill text-center py-2"><i class="fa-regular fa-image" style="color: #00B98E; padding-right: 5px;"></i>4pictures</small>
+
                                     </div>
                                 </div>
                             </div>
@@ -203,11 +204,11 @@
                     Lands</p>
             </div>
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-3 col-md-6 mx-auto wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item rounded overflow-hidden">
                         <div class="position-relative">
                             <img class="img-fluid" src="{{ asset('images/7.jpeg') }}" alt="7.jpeg Image">
-
+            
                             <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
                                 <a class="btn btn-square mx-1"
                                     href="https://www.facebook.com/profile.php?id=100019503100978" target="_blank"><i
@@ -225,6 +226,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
     <!-- Team End -->

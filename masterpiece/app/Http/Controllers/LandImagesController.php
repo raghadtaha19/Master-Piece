@@ -49,7 +49,7 @@ class LandImagesController extends Controller
     
         $sell_form_id = $request->input('sell_form_id');
         $landimages->sell_form_id = $sell_form_id;
-        //  dd($request->all());
+        
         if ($request->hasFile('image1')) {
             $images = [$request->file('image1'), $request->file('image2'), $request->file('image3'), $request->file('image4')];
                 
@@ -129,18 +129,6 @@ class LandImagesController extends Controller
         return back()->with('success', 'LandImages deleted successfully.');
  
     }
-//     public function storeImages($request)
-// {
-//     $relativeImagePaths = []; // Initialize an empty array for relative image paths
 
-//     foreach ($request->file('images') as $imageFile) {
-//         $newImageName = uniqid() . '-' . $request->addedCategoryName . '.' . $imageFile->extension();
-//         $relativeImagePath = 'assets/images/' . $newImageName;
-//         $imageFile->move(public_path('assets/images'), $newImageName);
-//         $relativeImagePaths[] = $relativeImagePath; // Add the relative path to the array
-//     }
-
-//     return $relativeImagePaths; // Return an array of relative image paths
-// }
 
 }

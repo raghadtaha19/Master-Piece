@@ -21,8 +21,8 @@
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
 
             </div>
-            <a href="" class="btn btn-primary px-3 d-lg-flex">Sign UP</a>
-            <a href="" class="btn btn-primary px-3 d-lg-flex">Login</a>
+            <a href="{{ route('signup') }}" class="btn btn-primary px-3 d-lg-flex">Sign UP</a>
+            <a href="{{ route('login') }}" class="btn btn-primary px-3 d-lg-flex">Login</a>
         </div>
     </nav>
 </div>

@@ -14,7 +14,8 @@ class LandReservationController extends Controller
      */
     public function index()
     {
-        //
+        $landreservations=LandReservation::get();
+        return view('dashboard.landreservations.index', compact('landreservations'));
     }
 
     /**
@@ -24,7 +25,7 @@ class LandReservationController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.landreservations.create');
     }
 
     /**
@@ -35,7 +36,7 @@ class LandReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

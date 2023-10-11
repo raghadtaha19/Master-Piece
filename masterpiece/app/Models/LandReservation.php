@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LandReservation extends Model
 {
     use HasFactory;
-    public $timestamps = false; // Disable timestamps
+    public $timestamps = true; // Enable timestamps
     protected $fillable = [
         'user_id',
         'land_card_id',

@@ -36,7 +36,7 @@
 <!-- Property List Start -->
 <div class="container-xxl py-5">
     <div class="container-fluid">
-        <div class="row g-4">
+        <div class="row g-4" id="filteredResults">
             
             @foreach ($landcards as $landcard)
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -49,11 +49,12 @@
                     </div>
                     <div class="p-4 pb-0">
                         <h5 class="text-primary mb-3">{{ $landcard->price }}</h5>
-                        <a class="d-block h5 mb-2" href="">{{ $landcard->governorate }}</a>
+                        <a class="d-block h5 mb-2" href="{{ route('singlepage' , ['product'=>$landcard->id]) }}">{{ $landcard->governorate }}</a>
                         <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ $landcard->district }}</p>
                     </div>
                     <div class="d-flex border-top">
                         <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{ $landcard->area }}</small>
+                        <small class="flex-fill text-center py-2"><i class="fa-regular fa-image" style="color: #00B98E; padding-right: 5px;"></i>4pictures</small>
                     </div>
                 </div>
             </div>
@@ -89,5 +90,44 @@
         @endsection
 
         @section('scripts')
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Function to update the filtered results
+        function updateFilteredResults() {
+            const selectedArea = $("select[name='area']").val();
+            const selectedPrice = $("select[name='price']").val();
+            const selectedGovernorate = $("select[name='governorate']").val();
+
+            // Make an AJAX request to the server to fetch filtered results
+            $.ajax({
+                type: "GET",
+                url: "{{ route('filterlands') }}", // Replace with your Laravel route
+                data: {
+                    area: selectedArea,
+                    price: selectedPrice,
+                    governorate: selectedGovernorate // Update the parameter name
+                },
+                success: function(data) {
+                    // Update the #filteredResults div with the filtered data
+                    $("#filteredResults").html(data);
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        // Bind the change event to the selects to trigger the filter
+        $("select").change(function() {
+            updateFilteredResults();
+        });
+
+        // Initially load the filtered results on page load
+        updateFilteredResults();
+    });
+</script>
+
 
         @endsection

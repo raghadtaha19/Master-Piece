@@ -64,14 +64,16 @@
                                         @endphp
                                         @foreach ($landimages as $landimage)
                                             <td>{{ $i }}</td>
-                                            <td><img src="{{  url('/images/' . $landimage->image1) }}" alt="" width="100px"
+                                            <td><img src="{{$landimage->image1}}" alt="" width="100px"
                                                     height="100px"></td>
-                                            <td><img src="{{ url('/images/' . $landimage->image2) }}" alt="" width="100px"
+                                            <td><img src="{{$landimage->image2}}" alt="" width="100px"
                                                     height="100px"></td>
-                                            <td><img src="{{ url('/images/' . $landimage->image3) }}" alt="" width="100px"
+                                            <td><img src="{{$landimage->image3}}" alt="" width="100px"
                                                     height="100px"></td>
-                                            <td><img src="{{ url('/images/' . $landimage->image4) }}" alt="" width="100px"
+                                            <td><img src="{{$landimage->image4}}" alt="" width="100px"
                                                     height="100px"></td>
+                                                    {{-- {{ url('/images/' . $landimage->image4) }} --}}
+
                                             <td>{{ $landimage->sell_form_id }}</td>
                                             <td class="project-actions">
                                                 <div style="margin-bottom: 5px; width: 100px;">

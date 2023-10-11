@@ -31,71 +31,59 @@ Partners list
             {{session()->get('success') }}
             @endif
           </div>
-          <div class="card">
-            <div class="card-header">
-                <!-- Add a link to create a new user -->
-                <a class="btn btn-primary btn-sm float-left" href="{{ route('partners.create') }}">
-                    <i class="fas fa-handshake nav-icon"></i> Add New Partner
-                </a>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
+          @section('content')
+<div class="card">
+    <div class="card-header">
+        <!-- Add a link to create a new land reservation -->
+        <a class="btn btn-primary btn-sm float-left" href="{{ route('landreservations.create') }}">
+            <i class="fas fa-handshake nav-icon"></i> Create New Reservation
+        </a>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
                     <th>#ID</th>
-                    <th>partner_name</th>
-                    <th>partner_image</th>
+                    <th>User</th>
+                    <th>Land Card</th>
+                    <th>Status</th>
+                    <th>Reservation Date</th>
+                    <th>Available Land Message</th>
+                    <th>Sold Land Message</th>
                     <th>Action</th>
                 </tr>
-                </thead>
-                <tbody>
+            </thead>
+            <tbody>
+                @foreach ($landreservations as $reservation)
                 <tr>
-                  @php
-                  $i=1;
-                @endphp
-                @foreach ($partners as $partner)
-                <td>{{ $i }}</td>
-                <td>{{ $partner->name }}</td>
-                <td><img src="{{ asset($partner->image) }}" alt="" width="100px" height="100px"></td>
-                <td class="project-actions ">
-                  {{-- <a class="btn btn-primary btn-sm" href="#">
-                      <i class="fas fa-folder">
-                      </i>
-                      View
-                  </a> --}}
-                  <a class="btn btn-info btn-sm" href="{{ route('partners.edit',$partner->id) }}">
-                      <i class="fas fa-pencil-alt">
-                      </i>
-                      Edit
-                  </a>
-                  {{-- <a class="btn btn-danger btn-sm" href="#">
-                      <i class="fas fa-trash">
-                      </i>
-                      Delete
-                  </a> --}}
-
-                  <form action="{{route('partners.destroy',$partner->id)}}"  method="POST"  style="display: inline;">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-danger btn-sm"
-                    onclick="return confirm('Are you sure you want to delete this partner?')">Delete</button>
-                  </form>
-              </td>
-                @php
-                  $i++;
-                @endphp
-
+                    <td>{{ $reservation->id }}</td>
+                    <td>{{ $reservation->user->name }}</td>
+                    <td>{{ $reservation->landCard->name }}</td>
+                    <td>{{ $reservation->status }}</td>
+                    <td>{{ $reservation->reservation_date }}</td>
+                    <td>{{ $reservation->available_land_message }}</td>
+                    <td>{{ $reservation->sold_land_message }}</td>
+                    <td class="project-actions">
+                        <a class="btn btn-info btn-sm" href="{{ route('landreservations.edit', $reservation->id) }}">
+                            <i class="fas fa-pencil-alt"></i> Edit
+                        </a>
+                        <form action="{{ route('landreservations.destroy', $reservation->id) }}" method="POST"
+                            style="display: inline;">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete this reservation?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
-
-                </tbody>
-                <tfoot>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+@endsection
           <!-- /.card -->
         </div>
         <!-- /.col -->

@@ -52,10 +52,19 @@ Route::get('dashboard_logout', [CustomAuthController::class, 'logout']);
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
-Route::get('/SingleLand/{product}', [PagesController::class, 'singlepage'])->name('singlepage');
+Route::get('/signup', [PagesController::class, 'signup'])->name('signup');
+Route::get('/login', [PagesController::class, 'login'])->name('login');
+Route::get('/singleland/{product}', [PagesController::class, 'singlepage'])->name('singlepage');
 Route::get('/category/{category}', [FrontCategoryController::class, 'showLandsByCategory'])->name('category.lands');
 Route::get( '/sellform', [FrontSellFormController::class, 'create'])->name('sellform');
 Route::match(['get', 'post'], '/sellform/store', [FrontSellFormController::class, 'store'])->name('sellform.store');
+
+Route::get( '/reservation', [PagesController::class, 'reservation'])->name('reservation');
+
+
+Route::get('/filterlands', [PagesController::class, 'filterlands'])->name('filterlands');
+
+
 
 
 

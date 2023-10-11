@@ -17,41 +17,41 @@ class ImagesSeeder extends Seeder
     {
         $landimages = [
             [
-                'image1' => 'images\zarqa.PNG',
-                'image2' => 'images\zarqa.PNG',
-                'image3' => 'images\zarqa.PNG',
-                'image4' => 'images\zarqa.PNG',
-            
+                'image1' => 'http://127.0.0.1:8000/images/zarqa.PNG',
+                'image2' => 'http://127.0.0.1:8000/images/zarqa.PNG',
+                'image3' => 'http://127.0.0.1:8000/images/zarqa.PNG',
+                'image4' => 'http://127.0.0.1:8000/images/zarqa.PNG',
+                
             ],
             [
-                'image1' => 'images\madaba.PNG',
-                'image2' => 'images\madaba.PNG',
-                'image3' => 'images\madaba.PNG',
-                'image4' => 'images\madaba.PNG',
+                'image1' => 'http://127.0.0.1:8000/images/madaba.PNG',
+                'image2' => 'http://127.0.0.1:8000/images/madaba.PNG',
+                'image3' => 'http://127.0.0.1:8000/images/madaba.PNG',
+                'image4' => 'http://127.0.0.1:8000/images/madaba.PNG',
             ],
             [
-                'image1' => 'images\jerash.PNG',
-                'image2' => 'images\jerash.PNG',
-                'image3' => 'images\jerash.PNG',
-                'image4' => 'images\jerash.PNG',
+                'image1' => 'http://127.0.0.1:8000/images/jerash.PNG',
+                'image2' => 'http://127.0.0.1:8000/images/jerash.PNG',
+                'image3' => 'http://127.0.0.1:8000/images/jerash.PNG',
+                'image4' => 'http://127.0.0.1:8000/images/jerash.PNG',
             ],
             [
-                'image1' => 'images\ham.PNG',
-                'image2' => 'images\ham.PNG',
-                'image3' => 'images\ham.PNG',
-                'image4' => 'images\ham.PNG',
+                'image1' => 'http://127.0.0.1:8000/images/ham.PNG',
+                'image2' => 'http://127.0.0.1:8000/images/ham.PNG',
+                'image3' => 'http://127.0.0.1:8000/images/ham.PNG',
+                'image4' => 'http://127.0.0.1:8000/images/ham.PNG',
             ],
             [
-                'image1' => 'images\Al-Qastal.PNG',
-                'image2' => 'images\Al-Qastal.PNG',
-                'image3' => 'images\Al-Qastal.PNG',
-                'image4' => 'images\Al-Qastal.PNG',
+                'image1' => 'http://127.0.0.1:8000/images/Al-Qastal.PNG',
+                'image2' => 'http://127.0.0.1:8000/images/Al-Qastal.PNG',
+                'image3' => 'http://127.0.0.1:8000/images/Al-Qastal.PNG',
+                'image4' => 'http://127.0.0.1:8000/images/Al-Qastal.PNG',
             ],
             [
-                'image1' => 'images\Iraq al-Amir.PNG',
-                'image2' => 'images\Iraq al-Amir.PNG',
-                'image3' => 'images\Iraq al-Amir.PNG',
-                'image4' => 'images\Iraq al-Amir.PNG',
+                'image1' => 'http://127.0.0.1:8000/images/Iraqal-Amir.PNG',
+                'image2' => 'http://127.0.0.1:8000/images/Iraqal-Amir.PNG',
+                'image3' => 'http://127.0.0.1:8000/images/Iraqal-Amir.PNG',
+                'image4' => 'http://127.0.0.1:8000/images/Iraqal-Amir.PNG',
             ],
         ];
 

@@ -19,7 +19,7 @@ class LandCardSeeder extends Seeder
        
        $landcards = [
         [
-            'image' => 'images\zarqa.PNG',
+            'image' => 'images\zarqa.png',
             'land_type' => 'Residential Land',
             'price' => '35.000 Jd',
             'governorate' => 'Zarqa',
@@ -30,7 +30,7 @@ class LandCardSeeder extends Seeder
            
         ],
         [
-            'image' => 'images\madaba.PNG', 
+            'image' => 'images\madaba.png', 
             'land_type' => 'Commercial Land',
             'price' => '10.000 Jd',
             'governorate' => 'Madaba',
@@ -40,7 +40,7 @@ class LandCardSeeder extends Seeder
             'additional_information'=>'additional_information',
         ],
         [
-            'image' => 'images\jerash.PNG', 
+            'image' => 'images\jerash.png', 
             'land_type' => 'Agricultural Land',
             'price' => '25.000 Jd',
             'governorate' => 'Jerash',
@@ -50,7 +50,7 @@ class LandCardSeeder extends Seeder
             'additional_information'=>'additional_information',
         ],
         [
-            'image' => 'images\ham.PNG',
+            'image' => 'images\ham.png',
             'land_type' => 'Residential Land',
             'price' => '12.345 Jd',
             'governorate' => 'Irbid',
@@ -60,7 +60,7 @@ class LandCardSeeder extends Seeder
             'additional_information'=>'additional_information',
         ],
         [
-            'image' => 'images\Al-Qastal.PNG', 
+            'image' => 'images\Al-Qastal.png', 
             'land_type' => 'Commercial Land',
             'price' => '15.000 Jd',
             'governorate' => 'Amman',
@@ -70,7 +70,7 @@ class LandCardSeeder extends Seeder
             'additional_information'=>'additional_information',
         ],
         [
-            'image' => 'images\Iraq al-Amir.PNG', 
+            'image' => 'images\Iraqal-Amir.png', 
             'land_type' => 'Agricultural Land',
             'price' => '40.000 Jd',
             'governorate' => 'Amman',
