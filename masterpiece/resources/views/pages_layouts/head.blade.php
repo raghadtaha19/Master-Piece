@@ -9,12 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
-<link href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet"> --}}
 {{-- <link href="{{ asset('pages_assets/css/bootstrap-icons.css') }}" rel="stylesheet"> --}}
 
 <!-- Libraries Stylesheet -->
 <link href="{{ asset('pages_assets/lib/animate/animate.min.css') }}" rel="stylesheet">
 <link href="{{ asset('pages_assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="{{ asset('pages_assets/css/bootstrap.min.css') }}" rel="stylesheet">

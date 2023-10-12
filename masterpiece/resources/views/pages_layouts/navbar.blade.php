@@ -15,13 +15,14 @@
             <div class="navbar-nav ms-auto">
                 <a href="{{ route('home') }}"
                     class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
+                    <a href="{{ route('sellform') }}"
+                    class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Sell Form</a>
                 <a href="{{ route('about') }}"
                     class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
 
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
-
             </div>
-            <a href="{{ route('signup') }}" class="btn btn-primary px-3 d-lg-flex">Sign UP</a>
+            <a href="{{ route('register') }}" class="btn btn-primary px-3 d-lg-flex" style="margin-right: 4px;">Register</a>
             <a href="{{ route('login') }}" class="btn btn-primary px-3 d-lg-flex">Login</a>
         </div>
     </nav>

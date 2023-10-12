@@ -71,7 +71,7 @@
 							Not a member?
 						</span>
 
-						<a href="{{ route('signup') }}" class="txt2 bo1">
+						<a href="{{ route('register') }}" class="txt2 bo1">
 							Sign up now
 						</a>
 					</div>

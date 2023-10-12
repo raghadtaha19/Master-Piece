@@ -259,7 +259,7 @@
 
 /*** Category ***/
 .cat-item div {
-    background: #FFFFFF;
+    background: #00B98E;
     border: 1px dashed rgba(0, 185, 142, .3);
     transition: .5s;
 }

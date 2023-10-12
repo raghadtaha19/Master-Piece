@@ -280,13 +280,13 @@
                 
                 <div class="row">
                     <input class="btn btn-primary py-3 px-5" type="submit" value="Submit">
-                    <div class="popup">
+                    {{-- <div class="popup">
                         <img src="tick.jpg" alt="">
                         <h2>Thank YOu</h2>
                         <p>kjvjnvklkklvfsdklmvfdlkmlkmlkvmklsf</p>
                         <button type="button">OK</button>
 
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

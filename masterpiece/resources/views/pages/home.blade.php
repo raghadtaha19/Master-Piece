@@ -9,30 +9,32 @@
 @section('content')
 
     <!-- Header Start -->
+
+    <!-- Header End -->
+    {{--  --}}
     <div class="container-fluid header bg-white p-0">
         <div class="container row g-0 align-items-center flex-column-reverse flex-md-row">
             <div class="col-md-6 p-5 mt-lg-5">
-                <h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary">Your dream property awaits!
-                    </span></h1>
+                <h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary">Your dream property awaits! </span></h1>
                 <p class="animated fadeIn mb-4 pb-2">The ultimate platform
-                    that satisfies all your land-buying and selling needs! Dive in and explore your dream property today.
-                </p>
+                    that satisfies all your land-buying and selling needs! Dive in and explore your dream property today.</p>
                 <a href="categories.html" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
-            </div>
+            </div> 
             <div class="col-md-6 animated fadeIn">
-                <div>
-                    <div>
-                        <img class="img-fluid" src="{{ asset('images\1.jpg') }}" alt="" style="height: 500px">
+                <div class="owl-carousel header-carousel">
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="{{ asset('images/1.jpg') }}" alt="">
                     </div>
-                    {{-- <div >
-                            <img class="img-fluid" src="{{ asset('images\2.jpg') }}" alt="">
-                        </div> --}}
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="{{ asset('images/2.jpg') }}" alt="">
+                    </div>
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="{{ asset('images/3.jpg') }}" alt="">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Header End -->
-
 
     @include('pages_layouts.search')
 
@@ -146,7 +148,7 @@
                 <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                 </div>
             </div>
-    
+
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
@@ -154,22 +156,25 @@
                             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
-                                        <a href="{{ route('singlepage', ['product' => $item->id]) }}"><img class="img-fluid" src="{{ asset($item->image) }}"
-                                                alt="Zarqa Image">
+                                        <a href="{{ route('singlepage', ['product' => $item->id]) }}"><img
+                                                class="img-fluid" src="{{ asset($item->image) }}" alt="Zarqa Image">
                                         </a>
                                         <div
                                             class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
                                             {{ $item->land_type }}</div>
                                     </div>
                                     <div class="p-4 pb-0">
-                                        <h5 class="text-primary mb-3" >{{ $item->price }}</h5>
-                                        <a class="d-block h5 mb-2" href="{{ route('singlepage', ['product' => $item->id]) }}">{{ $item->governorate }}</a>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2" ></i>{{ $item->district }}
+                                        <h5 class="text-primary mb-3">{{ $item->price }}</h5>
+                                        <a class="d-block h5 mb-2"
+                                            href="{{ route('singlepage', ['product' => $item->id]) }}">{{ $item->governorate }}</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ $item->district }}
                                         </p>
                                     </div>
                                     <div class="d-flex border-top">
-                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2" ></i>{{ $item->area }}</small>
-                                        <small class="flex-fill text-center py-2"><i class="fa-regular fa-image" style="color: #00B98E; padding-right: 5px;"></i>4pictures</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>{{ $item->area }}</small>
+                                        <small class="flex-fill text-center py-2"><i class="fa-regular fa-image"
+                                                style="color: #00B98E; padding-right: 5px;"></i>4pictures</small>
 
                                     </div>
                                 </div>
@@ -179,16 +184,16 @@
                 </div>
             </div>
             <br><br><br>
-    
+
             <!-- Display pagination links -->
-            <div class="row" >
+            <div class="row">
                 <div class="col-12 text-center" style="display: flex;   justify-content: center;">
                     {{ $landcards->links() }}
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Property List End -->
 
 
@@ -208,7 +213,7 @@
                     <div class="team-item rounded overflow-hidden">
                         <div class="position-relative">
                             <img class="img-fluid" src="{{ asset('images/7.jpeg') }}" alt="7.jpeg Image">
-            
+
                             <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
                                 <a class="btn btn-square mx-1"
                                     href="https://www.facebook.com/profile.php?id=100019503100978" target="_blank"><i
@@ -226,7 +231,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <!-- Team End -->
