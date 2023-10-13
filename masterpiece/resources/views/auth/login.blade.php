@@ -213,7 +213,7 @@
                         Facebook
                     </a>
                 
-                    <a href="#" class="btn-google m-b-20">
+                    <a href="{{ route('google-auth') }}" class="btn-google m-b-20">
                         <img src="{{ asset('pages_assets/images/icons/icon-google.png') }}" alt="GOOGLE">
                         Google
                     </a>

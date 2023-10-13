@@ -15,8 +15,7 @@ use App\Http\Controllers\LandReservationController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontSellFormController;
-
-
+use App\Http\Controllers\GoogleAuthController;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::view('/login', 'auth.login')->name('login');
@@ -87,3 +86,9 @@ Route::get( '/sellform', [FrontSellFormController::class, 'create'])->name('sell
 Route::match(['get', 'post'], '/sellform/store', [FrontSellFormController::class, 'store'])->name('sellform.store');
 Route::get( '/reservation', [PagesController::class, 'reservation'])->name('reservation');
 Route::get('/filterlands', [PagesController::class, 'filterlands'])->name('filterlands');
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+// google
+
+Route::get('auth/google', [GoogleAuthController::class,'redirect'])->name('google-auth');
+Route::get('auth/google/call-back', [GoogleAuthController::class,'callbackGoogle']);

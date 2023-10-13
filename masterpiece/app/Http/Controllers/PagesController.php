@@ -43,40 +43,40 @@ class PagesController extends Controller
 public function reservation(){
     return view('pages.reservation');
 }
-// public function filterlands(Request $request)
-// {
-//     // Get filter parameters from the request
-//     $area = $request->input('area');
-//     $price = $request->input('price');
-//     $governorate = $request->input('governorate');
+public function filterlands(Request $request)
+{
+    // Get filter parameters from the request
+    $area = $request->input('area');
+    $price = $request->input('price');
+    $governorate = $request->input('governorate');
 
-//     // Query your database to filter land cards based on the selected options
-//     $filteredLandCards = LandCard::where(function ($query) use ($area, $price, $governorate) {
-//         if ($area) {
-//             // Check if $area contains a valid range
-//             if (strpos($area, '-') !== false) {
-//                 // Parse the area range and add conditions to the query
-//                 list($minArea, $maxArea) = explode('-', $area);
-//                 $query->whereBetween('area', [$minArea, $maxArea]);
-//             }
-//         }
+    // Query your database to filter land cards based on the selected options
+    $filteredLandCards = LandCard::where(function ($query) use ($area, $price, $governorate) {
+        if ($area) {
+            // Check if $area contains a valid range
+            if (strpos($area, '-') !== false) {
+                // Parse the area range and add conditions to the query
+                list($minArea, $maxArea) = explode('-', $area);
+                $query->whereBetween('area', [$minArea, $maxArea]);
+            }
+        }
 
-//         if ($price) {
-//             // Check if $price contains a valid range
-//             if (strpos($price, '-') !== false) {
-//                 // Parse the price range and add conditions to the query
-//                 list($minPrice, $maxPrice) = explode('-', $price);
-//                 $query->whereBetween('price', [$minPrice, $maxPrice]);
-//             }
-//         }
+        if ($price) {
+            // Check if $price contains a valid range
+            if (strpos($price, '-') !== false) {
+                // Parse the price range and add conditions to the query
+                list($minPrice, $maxPrice) = explode('-', $price);
+                $query->whereBetween('price', [$minPrice, $maxPrice]);
+            }
+        }
 
-//         if ($governorate) {
-//             $query->where('governorate', $governorate);
-//         }
-//     })->get();
+        if ($governorate) {
+            $query->where('governorate', $governorate);
+        }
+    })->get();
 
-//     // Return a view with the filtered land cards
-//     return view('pages.categories', ['landcards' => $filteredLandCards]);
-// }
+    // Return a view with the filtered land cards
+    return view('pages.categories', ['landcards' => $filteredLandCards]);
+}
 
 }
