@@ -30,15 +30,25 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // dd('hello world');
+        
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'user_name' => ['required', 'string', 'max:255'],
+            'user_name' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'phone_number' => ['required', 'string', 'regex:/^(079|077|078)\d{7}$/', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => [
+                'required',
+                'confirmed',
+                Rules\Password::defaults(),
+                'regex:/(.*[A-Z].*)/',
+                'regex:/(.*[a-z].*)/',
+                'regex:/(.*\d.*)/',
+                'regex:/(.*[@$!%#?&].*)/',
+            ],
         ]);
+        
 
         $user = User::create([
             'first_name' => $request->first_name,
@@ -56,4 +66,5 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+    
 }

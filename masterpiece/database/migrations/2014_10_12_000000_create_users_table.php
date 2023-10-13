@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('user_name')->nullable();
+            $table->string('user_name')->unique()->nullable();
             $table->string('phone_number')->unique();
             $table->string('email')->unique()->nullable();
             $table->string('password')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
 

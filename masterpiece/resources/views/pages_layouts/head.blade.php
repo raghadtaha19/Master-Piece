@@ -2,6 +2,9 @@
 <!-- Favicon -->
 <link href="{{ asset('img/favicon.ico') }}" rel="icon">
 <script src="https://kit.fontawesome.com/2b59306dad.js" crossorigin="anonymous"></script>
+<!-- In your HTML head section -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
+
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

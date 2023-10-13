@@ -16,21 +16,27 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontSellFormController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::view('/login', 'auth.login')->name('login');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::middleware(['web', 'guest'])->group(function () {
+//     // Authentication Routes
+//     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+//     Route::post('/login', [LoginController::class, 'login']);
+//     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+//     // ... other authentication routes
+
+//     // Registration Routes
+//     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+//     Route::post('/register', [RegisterController::class, 'register']);
+//     // ... other registration routes
+// });
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -46,7 +52,7 @@ require __DIR__.'/auth.php';
 
 
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Dashboard
 
@@ -72,11 +78,9 @@ Route::get('dashboard_logout', [CustomAuthController::class, 'logout']);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Pages Controller
-Route::get('/home', [PagesController::class, 'home'])->name('home');
+Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
-// Route::get('/register', [PagesController::class, 'register'])->name('register');
-// Route::get('/login', [PagesController::class, 'login'])->name('login');
 Route::get('/singleland/{product}', [PagesController::class, 'singlepage'])->name('singlepage');
 Route::get('/category/{category}', [FrontCategoryController::class, 'showLandsByCategory'])->name('category.lands');
 Route::get( '/sellform', [FrontSellFormController::class, 'create'])->name('sellform');

@@ -207,12 +207,12 @@
                     <span class="login100-form-title p-b-53">
                         Sign In With
                     </span>
-
+                
                     <a href="#" class="btn-face m-b-20">
                         <i class="fa fa-facebook-official"></i>
                         Facebook
                     </a>
-
+                
                     <a href="#" class="btn-google m-b-20">
                         <img src="{{ asset('pages_assets/images/icons/icon-google.png') }}" alt="GOOGLE">
                         Google
@@ -220,14 +220,16 @@
                     <div class="col-12">
                         <div class="p-t-31 p-b-9">
                             <span class="txt1">
-                                Email
+                                Email or Username
                             </span>
                         </div>
                         <div class="wrap-input100 validate-input" data-validate="Email is required">
-                            <input class="input100" type="text" name="email">
-                            {{-- <span class="focus-input100"></span> --}}
+                            <input class="input100" type="text" name="input_type" value="{{ old('input_type') }}">
                         </div>
                         @error('email')
+                            <div class="error-message small-font">{{ $message }}</div>
+                        @enderror
+                        @error('user_name')
                             <div class="error-message small-font">{{ $message }}</div>
                         @enderror
                     </div>
@@ -236,40 +238,44 @@
                             <span class="txt1">
                                 Password
                             </span>
-
-                            <a href="#" class="txt2 bo1 m-l-5">
-                                Forgot?
+                    
+                            <a href="{{ route('password.request') }}" class="txt2 bo1 m-l-5">
+                                Forgot Password?
                             </a>
                         </div>
                         <div class="wrap-input100 validate-input" data-validate="Password is required">
                             <input class="input100" type="password" name="password">
-                            {{-- <span class="focus-input100"></span> --}}
                         </div>
                         @error('password')
                             <div class="error-message small-font">{{ $message }}</div>
                         @enderror
                     </div>
-
-                    <div class="container-login100-form-btn m-t-17">
-                        <button class="login100-form-btn" type="submit">
-                            Sign In
-                        </button>
+                    <!-- Remember Me -->
+                    <div class="block mt-4">
+                        <label for="remember_me" class="inline-flex items-center">
+                            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                            <span class="ml-2 text-sm text-gray-600">Remember Me</span>
+                        </label>
                     </div>
-
+                
+                    <div class="container-login100-form-btn m-t-17">
+                        <button class="login100-form-btn btn btn-primary btn-block" type="submit">Sign In</button>
+                    </div>
+                
                     <div class="w-full text-center p-t-30">
                         <span class="txt2">
                             Not a member?
                         </span>
-
+                
                         <a href="{{ route('register') }}" class="txt2 bo1">
                             Sign up now
                         </a>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>
-
 
     <div id="dropDownSelect1"></div>
 
@@ -284,5 +290,6 @@
     <script src="{{ asset('pages_assets/js/main.js') }}"></script>
 
 </body>
+
 
 </html>

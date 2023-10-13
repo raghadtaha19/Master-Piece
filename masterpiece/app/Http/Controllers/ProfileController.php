@@ -14,6 +14,12 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+    
+public function show(Request $request)
+{
+    $user = Auth::user();
+    return view('profile\partials\update-profile-information-form', compact('user'));
+}
     public function edit(Request $request): View
     {
         return view('profile.edit', [
