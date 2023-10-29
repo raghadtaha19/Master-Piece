@@ -30,8 +30,9 @@ class SellFormController extends Controller
      */
     public function create()
 {
+    $users=User::all();
     $categories = Category::all(); 
-    return view('dashboard.sellforms.create', compact('categories'));
+    return view('dashboard.sellforms.create', compact('categories','users'));
 }
 
     /**
@@ -55,7 +56,7 @@ class SellFormController extends Controller
             'price' => 'required',
             'description' => 'required',
             'additional_information' => 'required',
-            'user_id' => 'required|email', // Validate user existence based on the user's ID
+            'user_id' => auth()->id(), 
         ]);
 
         // Find the selected category
@@ -90,6 +91,7 @@ class SellFormController extends Controller
             ]);
 
             return redirect()->route('sellforms.index')->with('success', 'Sell Form created successfully.');
+            
         } else {
             // Handle the case where the selected category or user does not exist
             return redirect()->route('sellforms.create')->with('error', 'Selected category or user does not exist.');
@@ -134,15 +136,15 @@ class SellFormController extends Controller
 
         $selectedCategory = Category::find($request->input('land_type'));
         // $user = User::find($request->input('user_id'));
-        $user = User::where('email', $request->input('user_id'))->first();
+        // $user = User::where('email', $request->input('user_id'))->first();
     
-        if ($user) {
-            $userId = $user->id;
-        } else {
-            $userId = null; 
-        }
+        // if ($user) {
+        //     $userId = $user->id;
+        // } else {
+        //     $userId = null; 
+        // }
 
-        if ($selectedCategory && $user) {
+        if ($selectedCategory) {
             $sellform = SellForm::findOrFail($id);
             $sellform->ID_number = $request->input('ID_number');
             $sellform->land_type = $selectedCategory->name;
@@ -156,8 +158,7 @@ class SellFormController extends Controller
             $sellform->price = $request->input('price');
             $sellform->description = $request->input('description');
             $sellform->additional_information = $request->input('additional_information');
-            // $sellform->user_id = $user->id;
-            $sellform->user_id;
+            $sellform->user_id = auth()->id();
             $sellform->save();
 
             return redirect()->route('sellforms.index')->with('success', 'Sell Form updated successfully');

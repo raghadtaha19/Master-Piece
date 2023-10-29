@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-
+import postcssConfig from './postcss.config.cjs';
 export default defineConfig({
     plugins: [
         laravel({
@@ -14,5 +14,8 @@ export default defineConfig({
     build: {
         outDir: 'public/build', // Output directory
         manifest: true, // Enable manifest
+      },
+      css: {
+        postcss: postcssConfig,
       },
 });

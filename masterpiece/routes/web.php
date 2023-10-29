@@ -85,6 +85,7 @@ Route::get('/category/{category}', [FrontCategoryController::class, 'showLandsBy
 Route::get( '/sellform', [FrontSellFormController::class, 'create'])->name('sellform');
 Route::match(['get', 'post'], '/sellform/store', [FrontSellFormController::class, 'store'])->name('sellform.store');
 Route::get( '/reservation', [PagesController::class, 'reservation'])->name('reservation');
+Route::match(['get', 'post'],'landreservations/reserveAndRedirect/{id}', [LandReservationController::class, 'reserveAndRedirect'])->name('reserveAndRedirect');
 Route::get('/filterlands', [PagesController::class, 'filterlands'])->name('filterlands');
 ////////////////////////////////////////////////////////////////////////////////////////////////
 

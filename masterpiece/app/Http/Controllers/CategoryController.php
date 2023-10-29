@@ -24,8 +24,8 @@ class CategoryController extends Controller
     
     {
         $request->validate([
-            'name' => 'required',
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000',
+            'name' => 'required|string:100',
+            'image' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
         ]);
 
        
@@ -33,6 +33,7 @@ class CategoryController extends Controller
         $newImageName = uniqid() . '-' . $request->addedCategoryName . '.' . $request->file('image')->extension();
         $relativeImagePath = 'assets/images/' . $newImageName;
         $request->file('image')->move(public_path('assets/images'), $newImageName);
+        
        
 
        
@@ -57,10 +58,10 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'name' => 'required',
-            
-        // ]);
+        $request->validate([
+            'name' => 'required|string:100',
+            'image' => 'required|image|mimes:png,gif,bmp,svg,webp|max:2048',
+        ]);
         
         $data = $request->except(['_token', '_method']);
 
@@ -83,12 +84,12 @@ class CategoryController extends Controller
     }
 
    
-    public function storeImage($request)
-    {
-        $newImageName = uniqid() . '-' . $request->addedCategoryName . '.' . $request->file('image')->extension();
-        $relativeImagePath = 'assets/images/' . $newImageName;
-        $request->file('image')->move(public_path('assets/images'), $newImageName);
-        return $relativeImagePath;
+    // public function storeImage($request)
+    // {
+    //     $newImageName = uniqid() . '-' . $request->addedCategoryName . '.' . $request->file('image')->extension();
+    //     $relativeImagePath = 'assets/images/' . $newImageName;
+    //     $request->file('image')->move(public_path('assets/images'), $newImageName);
+    //     return $relativeImagePath;
 
-    }
+    // }
 }

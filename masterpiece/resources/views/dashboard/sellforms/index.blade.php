@@ -26,8 +26,9 @@
 
 @section('content')
     <!-- Main content -->
+    <div style="overflow-x: auto">
+
     <section class="content">
-        <div style="overflow-x: auto">
 
         <div class="container-fluid">
             <div class="row">
@@ -85,8 +86,7 @@
                                                 <td>{{ $sellform->basin }}</td>
                                                 <td>{{ $sellform->district }}</td>
                                                 <td>{{ $sellform->piece_number }}</td>
-                                                <td>{{ optional($sellform->user)->first_name }}</td>
-
+                                                <td>{{ $sellform->user->email }}</td>
                                                 <td class="project-actions">
                                                     <div style="margin-bottom: 5px;">
                                                         <a class="btn btn-info btn-sm"

@@ -15,9 +15,9 @@
     <div class="container-fluid header bg-white p-0">
         <div class="container row g-0 align-items-center flex-column-reverse flex-md-row">
             <div class="col-md-6 p-5 mt-lg-5">
-                <h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary">Your dream property awaits! </span></h1>
+                <h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary">Your dream land awaits! </span></h1>
                 <p class="animated fadeIn mb-4 pb-2">The ultimate platform
-                    that satisfies all your land-buying and selling needs! Dive in and explore your dream property today.</p>
+                    that satisfies all your land-buying and selling needs! Dive in and explore your dream land today.</p>
                 <a href="categories.html" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
             </div> 
             <div class="col-md-6 animated fadeIn">
@@ -84,13 +84,13 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <h1 class="mb-4">#1 Place To Find The Perfect Property</h1>
+                    <h1 class="mb-4">#1 Place To Find The Perfect land</h1>
                     <p class="mb-4">Experience the epitome of luxury living with our exclusive selection of premium
                         properties.</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>Your journey to the perfect property starts here.</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Your journey to the perfect land starts here.</p>
                     <p><i class="fa fa-check text-primary me-3"></i>Discover a world of possibilities with our diverse
-                        property listings.</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>Find your ideal property and create memories that last a
+                        Lands listings.</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Find your ideal land and create memories that last a
                         lifetime.</p>
                     <a class="btn btn-primary py-3 px-5 mt-3" href="{{ route('about') }}">Read more..</a>
                 </div>
@@ -114,7 +114,7 @@
                         earned the trust of countless clients through our steadfast commitment to delivering reliable and
                         credible services.</p>
                     <p><i class="fa fa-check text-primary me-3"></i>Our team's devotion to serving your needs is evident in
-                        every step we take, making us your reliable partner for all your property buying and selling
+                        every step we take, making us your reliable partner for all your land buying and selling
                         endeavors</p>
                     <a class="btn btn-primary py-3 px-5 mt-3" href="{{ route('sellform') }}">For Sell..</a>
                 </div>
@@ -142,7 +142,7 @@
                 <div class="col-lg-6">
                     <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
                         <h1 class="mb-3">Lands Listing</h1>
-                        <p>"Discover your dream property and make it a reality with our exclusive listings."</p>
+                        <p>"Discover your dream land and make it a reality with our exclusive listings."</p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">

@@ -16,18 +16,16 @@ class FrontSellFormController extends Controller
     $categories = Category::all();
     $users = User::all();
 
-    return view('pages.sellform', compact('categories', 'users'));
+    return view('pages.sellform', compact('categories'));
 }
 
 
     public function store(Request $request)
     {
-        
+
         $validatedData = $request->validate([ 
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
+            
             'idNumber'=>'required|string|max:20',
-            'phone' => 'required|string|max:20',
             'land_type' => 'required',
             'governorate' => 'required|string|max:255',
             'directorate' => 'required|string|max:255',
@@ -39,34 +37,31 @@ class FrontSellFormController extends Controller
             'price' => 'required|numeric',
             'description' => 'required|string',
             'additionalinfo' => 'required',
-        ]);
-        $relativeImagePath = null;
-        $newImageName = uniqid() . '-' . $request->addedLandImagesName . '.' . $request->file('landimage1')->extension();
-        $relativeImagePath = 'assets/images/' . $newImageName;
-        $request->file('landimage1')->move(public_path('images'), $newImageName); 
-        
-       
-        $relativeImagePath = null;
-        $newImageName = uniqid() . '-' . $request->addedLandImagesName . '.' . $request->file('landimage2')->extension();
-        $relativeImagePath = 'assets/images/' . $newImageName;
-        $request->file('landimage2')->move(public_path('images'), $newImageName);
-        
-        $relativeImagePath = null;
-        $newImageName = uniqid() . '-' . $request->addedLandImagesName . '.' . $request->file('landimage3')->extension();
-        $relativeImagePath = 'assets/images/' . $newImageName;
-        $request->file('landimage3')->move(public_path('images'), $newImageName);
 
-        $relativeImagePath = null;
-        $newImageName = uniqid() . '-' . $request->addedLandImagesName . '.' . $request->file('landimage4')->extension();
-        $relativeImagePath = 'assets/images/' . $newImageName;
-        $request->file('landimage4')->move(public_path('images'), $newImageName);
-   
-          $users = User::create([
-            'first_name' => $validatedData['firstName'],
-            'last_name' => $validatedData['lastName'],
-            'phone_number' => $validatedData['phone'],
-            
         ]);
+        $relativeImagePath1 = null;
+        $imageName = time() . '_1' . $request->addedLandImagesName. '.' . $request->file('landimage1')->extension();
+        $relativeImagePath1 = $imageName;
+        $request->file('landimage1')->move(public_path('images'), $imageName);
+       
+
+
+        $relativeImagePath2 = null;
+        $imageName = time() . '_2' . $request->addedLandImagesName. '.' . $request->file('landimage2')->extension();
+        $relativeImagePath2 = $imageName;
+        $request->file('landimage2')->move(public_path('images'), $imageName);
+        
+        $relativeImagePath3 = null;
+        $imageName = time() . '_3' . $request->addedLandImagesName. '.' . $request->file('landimage3')->extension();
+        $relativeImagePath3 = $imageName;
+        $request->file('landimage3')->move(public_path('images'), $imageName);
+
+        $relativeImagePath4 = null;
+        $imageName = time() . '_4' . $request->addedLandImagesName. '.' . $request->file('landimage4')->extension();
+        $relativeImagePath4 = $imageName;
+        $request->file('landimage4')->move(public_path('images'), $imageName);
+
+        
 
         $selectedCategory = Category::find($request->input('land_type'));
         $sellforms = SellForm::create([
@@ -82,42 +77,52 @@ class FrontSellFormController extends Controller
             'price' => $validatedData['price'],
             'additional_information'=>$validatedData['additionalinfo'],
             'description' => $validatedData['description'],
+            'user_id' => auth()->user()->id,
         
 
         ]);
+
+    
        
         LandImages::create([
-            'image1' => $relativeImagePath,
-            'image2' => $relativeImagePath,
-            'image3' => $relativeImagePath,
-            'image4' => $relativeImagePath,
+            'image1' => $relativeImagePath1,
+            'image2' => $relativeImagePath2,
+            'image3' => $relativeImagePath3,
+            'image4' => $relativeImagePath4,
+            'sell_form_id'=>$sellforms->id,
         ]);
+        return back()->with('message_sent', 'Your Message has been sent successfully');
+
 
        
     }
-    public function storeImage($request)
-    {
-        $newImageName = uniqid() . '-' . $request->addedLandImagesName . '.' . $request->file('landimage1')->extension();
-        $relativeImagePath = 'images/' . $newImageName;
-        $request->file('landimage1')->move(public_path('images'), $newImageName);
-        return $relativeImagePath;
-
-        $newImageName = uniqid() . '-' . $request->addedLandImagesName . '.' . $request->file('landimage2')->extension();
-        $relativeImagePath = 'images/' . $newImageName;
-        $request->file('landimage2')->move(public_path('images'), $newImageName);
-        return $relativeImagePath;
-
-        $newImageName = uniqid() . '-' . $request->addedLandImagesName . '.' . $request->file('landimage3')->extension();
-        $relativeImagePath = 'images/' . $newImageName;
-        $request->file('landimage3')->move(public_path('images'), $newImageName);
-        return $relativeImagePath;
-
-        $newImageName = uniqid() . '-' . $request->addedLandImagesName . '.' . $request->file('landimage4')->extension();
-        $relativeImagePath = 'images/' . $newImageName;
-        $request->file('landimage4')->move(public_path('images'), $newImageName);
-        return $relativeImagePath;
-    }
+    // public function storeImage(Request $request)
+    // {
+    //     $landimages = new LandImages();
     
-   
-   
-}
+    //     $request->validate([
+    //         'sell_form_id' => 'required|exists:sell_forms,id',
+    //     ]);
+    
+    //     $sell_form_id = $request->input('sell_form_id');
+    //     $landimages->sell_form_id = $sell_form_id;
+    
+    //     $allowedColumns = ['image1', 'image2', 'image3', 'image4'];
+        
+    //     foreach ($allowedColumns as $column) {
+
+    //         if ($request->hasFile($column)) {
+    //             $image = $request->file($column);
+    //             $imageName = time() . '_' . $column . '.' . $image->getClientOriginalExtension();
+                
+    //             $image->move(public_path('images'), $imageName);
+    
+    //             $landimages->$column = $imageName;
+    //         }
+    //     }
+        
+    
+    //     $landimages->save();
+    //     return redirect()->route('landimages.index')->with('success', 'Land Images uploaded successfully.');
+    // }
+}    

@@ -92,7 +92,6 @@
                         <div class="tab-pane fade show active" id="tab-pane-1">
                             <h4 class="mb-3">Land Description</h4>
                             <p>{{ $landcard->description }}</p>
-                            
                         </div>
                         <div class="tab-pane fade" id="tab-pane-2">
                             <h4 class="mb-3">Additional Information</h4>
@@ -102,14 +101,19 @@
                             </div>
                         </div>
                         <br><br>
-                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-primary py-3 px-5" href="{{ route('reservation') }}">Reserve Now!</a>
-                        </div>
+                        <form method="post" action="{{ route('reserveAndRedirect', ['id' => $landcard->id])  }}" id="reservation-form">
+                            @csrf
+                            <input type="hidden" name="reservation_date" id="reservation_date" required>
+                            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                            <button type="submit" class="btn btn-primary py-3 px-5">Reserve Now!</button>
+                            </div>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
-        </div>  
-    </div>
+        </div>
+        </div>
       
     <!-- Shop Detail End -->
 
@@ -119,6 +123,17 @@
     @endsection
 
     @section('scripts')
+    <script>
+        document.querySelector('form button').addEventListener('click', function () {
+            // Get the current date and format it as 'YYYY-MM-DD'
+            const currentDate = new Date().toISOString().split('T')[0];
+            // Set the value of the hidden input field to the current date
+            document.getElementById('reservation_date').value = currentDate;
+        });
+    </script>
+    {{-- Now, when the "Reserve Now" button is clicked, it will set the reservation_date hidden input field with the current date using JavaScript. --}}
+    
+    
     
     @endsection
     

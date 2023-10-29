@@ -4,13 +4,14 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('pages_assets\css\style.css') }}">
-     
+
 @endsection
 
 @section('content')
 
 
     <!-- Header Start -->
+   
     <div class="container-fluid header bg-white p-0">
         <div class="container row g-0 align-items-center flex-column-reverse flex-md-row">
             <div class="col-md-6 p-5 mt-lg-5">
@@ -31,19 +32,29 @@
     <!-- Header End -->
 
 
+
     @include('pages_layouts.search')
     <div class="container-fluid pb-5">
         <!-- Commission Information -->
         <div class="commission-info bg-light p-30 mb-4">
             <h2 class="form-titles">Commission Information</h2>
-            <p>If your land is sold within 3 months, I will be entitled to a commission of <strong>1%</strong> of the sale
+            <p>If your land is sold within 3 months, I will be entitled to a commission of <strong>2%</strong> of the sale
                 value.</p>
-            <p>If it's sold after the 3 months, I will take a commission of <strong>0.5%</strong> of the sale value.</p>
+            <p>If it's sold after the 3 months, I will take a commission of <strong>1%</strong> of the sale value.</p>
         </div>
+        @if (Session::has('message_sent'))
+        <div class="alert alert-success" role="alert" id="success-alert">
+            {{ Session::get('message_sent') }}
+        </div>
+    @endif
+    
+       
+        
+    
         <form method="POST" action="{{ route('sellform.store') }}" enctype="multipart/form-data">
             @csrf
-            
-        
+
+
             <!-- Personal Information -->
             <h1 class="form-titles">Fill the Form:</h1>
             <div class="container1">
@@ -52,7 +63,8 @@
                         <label for="firstName">First Name:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="firstName" name="firstName" placeholder="Your first name..">
+                        <input type="text" id="firstName" name="firstName" placeholder="Your first name.."
+                            value="{{ auth()->check() ? auth()->user()->first_name : old('first_name') }}">
                         @error('firstName')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -63,7 +75,8 @@
                         <label for="lastName">Last Name:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="lastName" name="lastName" placeholder="Your last name..">
+                        <input type="text" id="lastName" name="lastName" placeholder="Your last name.."
+                            value="{{ auth()->check() ? auth()->user()->last_name : old('last_name') }}">
                         @error('lastName')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -87,7 +100,8 @@
                         <label for="phone">Phone Number:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="phone" name="phone" placeholder="Your phone number..">
+                        <input type="text" id="phone" name="phone" placeholder="Your phone number.."
+                            value="{{auth()->check() ? auth()->user()->phone_number : old('phone_number') }}">
                         @error('phone')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -101,8 +115,9 @@
                         <label for="land_type">Land Type:</label>
                     </div>
                     <div class="col-75">
-                        <select name="land_type" class="form-control" required style="background: transparent url('/images/arrow-down.png') no-repeat right ; background-size: 15px; -webkit-appearance: none; -moz-appearance: none; appearance: none; ">               
-                                 @foreach ($categories as $category)
+                        <select name="land_type" class="form-control" required
+                            style="background: transparent url('/images/arrow-down.png') no-repeat right ; background-size: 15px; -webkit-appearance: none; -moz-appearance: none; appearance: none; ">
+                            @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
@@ -111,7 +126,7 @@
                         @enderror
                     </div>
                 </div>
-                
+
                 <input type="hidden" name="category_id" value="{{ $category->id }}">
 
 
@@ -277,24 +292,49 @@
                         @enderror
                     </div>
                 </div>
-                
                 <div class="row">
-                    <input class="btn btn-primary py-3 px-5" type="submit" value="Submit">
-                    {{-- <div class="popup">
-                        <img src="tick.jpg" alt="">
-                        <h2>Thank YOu</h2>
-                        <p>kjvjnvklkklvfsdklmvfdlkmlkmlkvmklsf</p>
-                        <button type="button">OK</button>
+                    <div class="col-25">
+                        <label for="user_id"></label>
+                    </div>
+                    <div class="col-75">
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                    </div>
+                </div>
+                
 
-                    </div> --}}
+
+                <div class="row">
+                    @if (auth()->check())
+                        <input class="btn btn-primary py-3 px-5" type="submit" value="Submit">
+                    @else
+                        <button class="btn btn-primary py-3 px-5" type="button" disabled>Submit</button>
+                        <p class="text-danger">You must register in order to fill out the form.</p>
+                    @endif
                 </div>
             </div>
-        </div>
-        </form>
+    </div>
+    </form>
+   
 
 
-    @endsection
+@endsection
 
-    @section('scripts')
-    
-    @endsection
+
+@section('scripts')
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    // Check if the success alert element exists and display SweetAlert 2
+    var successAlert = document.getElementById('success-alert');
+    if (successAlert) {
+        Swal.fire({
+            text: "Your Message has been sent successfully",
+            icon: "success"
+        });
+    }
+</script>
+
+@endsection
+
+
+

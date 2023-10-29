@@ -63,14 +63,15 @@
                                             $i = 1;
                                         @endphp
                                         @foreach ($landimages as $landimage)
+                                        
                                             <td>{{ $i }}</td>
-                                            <td><img src="{{$landimage->image1}}" alt="" width="100px"
+                                            <td><img src="{{ asset('images/' . $landimage->image1) }}" alt="" width="100px"
                                                     height="100px"></td>
-                                            <td><img src="{{$landimage->image2}}" alt="" width="100px"
+                                            <td><img src="{{ asset('images/' . $landimage->image2) }}" alt="" width="100px"
                                                     height="100px"></td>
-                                            <td><img src="{{$landimage->image3}}" alt="" width="100px"
+                                            <td><img src="{{ asset('images/' . $landimage->image3) }}" alt="" width="100px"
                                                     height="100px"></td>
-                                            <td><img src="{{$landimage->image4}}" alt="" width="100px"
+                                            <td><img src="{{ asset('images/' . $landimage->image4) }}" alt="" width="100px"
                                                     height="100px"></td>
                                                     {{-- {{ url('/images/' . $landimage->image4) }} --}}
 

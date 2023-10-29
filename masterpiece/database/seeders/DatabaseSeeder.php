@@ -19,8 +19,6 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ImagesSeeder::class,
             LandCardSeeder::class,
-            SubscriptionSeeder::class,
-            SellFormsTableSeeder::class,
             
         ]);
     }

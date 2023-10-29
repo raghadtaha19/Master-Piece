@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LandImages extends Model
 {
     use HasFactory;
-    public $timestamps = false; // Disable timestamps
+    // public $timestamps = false; // Disable timestamps
     protected $fillable = [
         'image1',
         'image2',

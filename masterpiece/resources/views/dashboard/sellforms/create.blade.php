@@ -32,6 +32,7 @@ Create New Sell Form
        </div>
        <input type="hidden" name="category_id" value="{{ $category->id }}">
        
+       
 
     <div class="form-group">
         <label for="user_id">User Email:</label>

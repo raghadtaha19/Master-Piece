@@ -41,7 +41,7 @@ class LandImagesController extends Controller
         
         $landimages = new LandImages();
     
-        // dd($request->all());
+        
         $request->validate([
             'sell_form_id' => 'required|exists:sell_forms,id',
         ]);

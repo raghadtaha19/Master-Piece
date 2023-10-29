@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SellForm extends Model
 {
     use HasFactory;
-    public $timestamps = false; // Disable timestamps
+    // public $timestamps = false;
     protected $fillable = [
         'ID_number',
         'land_type',
@@ -23,6 +23,7 @@ class SellForm extends Model
         'description',
         'additional_information',
         'user_id',
+        'sell_form_id',
     ];
     public function user()
     {
