@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\LandCard;
+use App\Models\LandReservation;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -13,8 +14,11 @@ class PagesController extends Controller
     
     public function home(){
         $categories = Category::all();
-        $landcards = LandCard::paginate(6); ; 
-        return view('pages.home', compact('categories','landcards'));
+        $landcards = LandCard::paginate(6); 
+        $landreservation=LandReservation::all();
+
+        return view('pages.home', compact('categories','landcards', 'landreservation'));
+
     }
     public function about(){
         return view('pages.about');

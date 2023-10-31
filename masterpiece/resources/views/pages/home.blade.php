@@ -3,22 +3,23 @@
 @section('title', 'Home Page')
 
 @section('css')
-
+<style>
+    body{
+        scroll-behavior: smooth
+    }
+</style>
 @endsection
 
 @section('content')
 
     <!-- Header Start -->
-
-    <!-- Header End -->
-    {{--  --}}
     <div class="container-fluid header bg-white p-0">
         <div class="container row g-0 align-items-center flex-column-reverse flex-md-row">
             <div class="col-md-6 p-5 mt-lg-5">
                 <h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary">Your dream land awaits! </span></h1>
                 <p class="animated fadeIn mb-4 pb-2">The ultimate platform
                     that satisfies all your land-buying and selling needs! Dive in and explore your dream land today.</p>
-                <a href="categories.html" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
+                <a href="#Lands Listing" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
             </div> 
             <div class="col-md-6 animated fadeIn">
                 <div class="owl-carousel header-carousel">
@@ -35,7 +36,7 @@
             </div>
         </div>
     </div>
-
+<!-- Header End -->
     @include('pages_layouts.search')
 
 
@@ -141,7 +142,7 @@
             <div class="row g-0 gx-5 align-items-end">
                 <div class="col-lg-6">
                     <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                        <h1 class="mb-3">Lands Listing</h1>
+                        <h1 class="mb-3" id="Lands Listing">Lands Listing</h1>
                         <p>"Discover your dream land and make it a reality with our exclusive listings."</p>
                     </div>
                 </div>
@@ -163,6 +164,11 @@
                                             class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
                                             {{ $item->land_type }}</div>
                                     </div>
+                                    @if ($landreservation->where('land_card_id', $item->id)->count() > 0)
+                                    <div class=" start-0 top-0 mx-4 pt-1 px-3 bg-danger text-white">
+                                        Reserved
+                                    </div>
+                                @endif
                                     <div class="p-4 pb-0">
                                         <h5 class="text-primary mb-3">{{ $item->price }}</h5>
                                         <a class="d-block h5 mb-2"

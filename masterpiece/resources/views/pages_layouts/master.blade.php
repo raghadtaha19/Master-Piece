@@ -9,9 +9,11 @@
 
     @include('pages_layouts.head')
 
+
 </head>
 
 <body>
+    @include('sweetalert::alert')
 
     <div class="container-xxl bg-white p-0">
         @include('pages_layouts.navbar')

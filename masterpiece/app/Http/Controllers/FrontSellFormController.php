@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\SellForm;
 use App\Models\LandImages;
 use App\Models\Category;
+use Alert;
 
 class FrontSellFormController extends Controller
 {
@@ -91,7 +92,9 @@ class FrontSellFormController extends Controller
             'image4' => $relativeImagePath4,
             'sell_form_id'=>$sellforms->id,
         ]);
-        return back()->with('message_sent', 'Your Message has been sent successfully');
+
+        Alert::success('Congrats','Your Message has been sent successfully');
+        return redirect()->back();
 
 
        

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LandReservation;
 use App\Models\User;
 use App\Models\LandCard;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class LandReservationController extends Controller
@@ -47,40 +48,50 @@ class LandReservationController extends Controller
 
         return redirect()->route('landreservations.index')->with('success', 'Land Reservation created successfully');
     }
+
     public function reserveAndRedirect(Request $request, $id)
-{
-   // Find the specific LandCard by its ID
-   $landcards= LandCard::find($id);
+    {
+        if (auth()->check()) {
+            $user_id = auth()->id();
+        } else {
+            return redirect()->route('login');
+        }
+    
+        $landcard = LandCard::find($id);
+    
+        // Check if the user has already made a reservation for this land card
+        $existingReservation = LandReservation::where('user_id', $user_id)
+            ->where('land_card_id', $landcard->id)
+            ->first();
+    
+        if ($existingReservation) {
+            return view('pages.reserved');
+        }
+    
+        $landreservation = new LandReservation();
+        $landreservation->user_id = $user_id;
+        $landreservation->land_card_id = $landcard->id;
+        $landreservation->status = 'reserve';
+        $landreservation->reservation_date = now();
+        $landreservation->save();
+    
+        // Retrieve all land cards
+        $landcards = LandCard::all();
+        $categories = Category::all();
 
-//    if (!$landcards) {
-//        return redirect()->route('reservation')->with('error', 'Land Card not found');
-//    }
 
-   // Check if the user has already made a reservation for this land card
-   $existingReservation = LandReservation::where('user_id', auth()->id())
-       ->where('land_card_id', $landcards->id)
-       ->first();
+    
+        // Redirect to the 'home' route and pass data to the view
+        return view('pages.reservation', compact('categories','landcards', 'landreservation'));
+    }
+    
+    
 
-   if ($existingReservation) {
-       return view('pages.reserved');
-   }
-    $landreservations = new LandReservation();
-    $landreservations->user_id = auth()->id();
-    $landreservations->land_card_id = $landcards->id;
-    $landreservations->status = 'Pending';
-    $landreservations->reservation_date = now();    
-    $landreservations->save();
-
-     
-        return redirect()->route('reservation');
-   
-}
 
 
 
     public function show(LandReservation $landReservation)
     {
-        // You can implement this method to display the details of a specific land reservation.
     }
 
     public function edit($id)
