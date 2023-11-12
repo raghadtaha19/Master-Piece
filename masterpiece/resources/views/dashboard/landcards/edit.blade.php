@@ -73,7 +73,7 @@ Edit Land Cards
             @error('area') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="description">Description:</label>
             <textarea name="description" class="form-control" placeholder="Enter Description" required>{{ $sellforms->description }}</textarea>
             @error('description')<span class="text-danger">{{ $message }}</span>@enderror
@@ -83,7 +83,7 @@ Edit Land Cards
             <label for="additional_information">Additional Information:</label>
             <textarea name="additional_information" class="form-control" placeholder="Enter Additional Information" required>{{ $sellforms->additional_information }}</textarea>
             @error('additional_information')<span class="text-danger">{{ $message }}</span>@enderror
-        </div>
+        </div> --}}
 
         <input type="submit" value="Update Land Card" class="btn btn-primary">
     </form>

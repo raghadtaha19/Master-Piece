@@ -23,7 +23,7 @@ class SellForm extends Model
         'description',
         'additional_information',
         'user_id',
-        'sell_form_id',
+        // 'sell_form_id',
     ];
     public function user()
     {
@@ -49,4 +49,6 @@ class SellForm extends Model
     {
         return $this->hasOne(LandCard::class);
     }
+
+    
 }

@@ -8,6 +8,7 @@ use App\Models\SellForm;
 use App\Models\LandImages;
 use App\Models\Category;
 use Alert;
+use Illuminate\Support\Facades\Session;
 
 class FrontSellFormController extends Controller
 {
@@ -25,21 +26,34 @@ class FrontSellFormController extends Controller
     {
 
         $validatedData = $request->validate([ 
-            
-            'idNumber'=>'required|string|max:20',
+            'firstName'=>'required|string|max:50',
+            'lastName'=>'required|string|max:50',
+            'phone' => ['required', 'numeric', 'regex:/(079|077|078)\d{7}/'],
+            'idNumber'=>'required|numeric|max:20',
             'land_type' => 'required',
-            'governorate' => 'required|string|max:255',
-            'directorate' => 'required|string|max:255',
-            'village' => 'required|string|max:255',
-            'basin' => 'required|string|max:255',
-            'district' => 'required|string|max:255',
-            'pieceNumber' => 'required|string|max:255',
-            'area' => 'required|string|max:255',
+            'governorate' => 'required|string|max:50',
+            'directorate' => 'required|string|max:50',
+            'village' => 'required|string|max:50',
+            'basin' => 'required|string|max:50',
+            'district' => 'required|string|max:50',
+            'pieceNumber' => 'required|string|max:20',
+            'area' => 'required|numeric',
             'price' => 'required|numeric',
             'description' => 'required|string',
-            'additionalinfo' => 'required',
+            'additionalinfo' => 'required|string',
+            'landimage1' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+            'landimage2' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+            'landimage3' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+            'landimage4' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
 
+
+        ], [
+            'phone.regex' => 'The phone number must start with 079, 077, or 078 followed by 7 digits.',
+            'idNumber.regex'=>'The id number must be 10 digits'
         ]);
+        // Session::flashInput($validatedData);
+
+
         $relativeImagePath1 = null;
         $imageName = time() . '_1' . $request->addedLandImagesName. '.' . $request->file('landimage1')->extension();
         $relativeImagePath1 = $imageName;

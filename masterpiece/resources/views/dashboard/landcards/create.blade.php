@@ -76,7 +76,7 @@ Create New Land Card
       <input type="text" name="area" class="form-control" placeholder="Enter Area" required>
       @error('area') <span class="text-danger">{{ $message }}</span> @enderror
   </div>
-  <div class="form-group">
+  {{-- <div class="form-group">
     <label for="description">Description:</label>
     <textarea name="description" class="form-control" placeholder="Enter Description" required></textarea>
     @error('description')<span class="text-danger">{{ $message }}</span>@enderror
@@ -86,7 +86,7 @@ Create New Land Card
     <label for="additional_information">Additional Information:</label>
     <textarea name="additional_information" class="form-control" placeholder="Enter Additional Information" required></textarea>
     @error('additional_information')<span class="text-danger">{{ $message }}</span>@enderror
-</div>
+</div> --}}
 
   
 

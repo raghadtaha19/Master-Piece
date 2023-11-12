@@ -16,10 +16,9 @@ class LandCard extends Model
         'governorate',
         'district',
         'area',
-        'number_of_images',
         'sell_form_id',
-        'status_from_user',
-        'status_from_admin',
+        // 'status_from_user',
+        // 'status_from_admin',
     ];
     protected $attributes = [
         'status_from_user' => 0, // or any other default value you prefer

@@ -45,14 +45,14 @@
     <!-- Category Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <div class="text-center mx-auto mb-5 " style="max-width: 600px;">
                 <h1 class="mb-3">Lands Types</h1>
                 <p>"Connect with our specialized team, sell today and get continuous support and exceptional customer
                     service."</p>
             </div>
             <div class="row g-4">
                 @foreach ($categories as $item)
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-lg-3 col-sm-6">
                         <a class="cat-item d-block bg-light text-center rounded p-3"
                             href="{{ route('category.lands', ['category' => $item->name]) }}">
                             <div class="rounded p-4">
@@ -60,11 +60,12 @@
                                     <img class="img-fluid" src="{{ asset($item->image) }}" alt="Icon">
                                 </div>
                                 <h6>{{ $item->name }}</h6>
+                                <span class="arrow-icon" style="display: inline-block;color:#00B98E;font-size: 30px;">&rarr;</span>
                             </div>
                         </a>
                     </div>
                 @endforeach
-            </div>
+            </div>            
         </div>
     </div>
 

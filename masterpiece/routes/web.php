@@ -64,6 +64,7 @@ Route::resource('dashboard/landimages', LandImagesController::class)->middleware
 Route::resource('dashboard/landcards', LandCardController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/landreservations', LandReservationController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/transactions', TransactionController::class)->middleware('adminMiddleWare');
+Route::post('/sellforms/{id}/accept', [SellFormController::class,'accept'])->name('sellforms.accept');
 
 Route::get('/dashboard_login', function () {
     return view('dashboard.dashboard_login');

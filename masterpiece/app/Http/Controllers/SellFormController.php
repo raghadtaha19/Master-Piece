@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\SellForm;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\LandCard;
+use App\Models\LandImages;
 use Illuminate\Http\Request;
 
 class SellFormController extends Controller
@@ -18,7 +20,7 @@ class SellFormController extends Controller
     {
         $categories = Category::all();
         $users = User::all();
-        $sellforms=SellForm::get();
+        $sellforms=SellForm::where ('Status','=','pending')->get();
         return view('dashboard.sellforms.index', compact('users','categories','sellforms'));
         
     }
@@ -56,7 +58,7 @@ class SellFormController extends Controller
             'price' => 'required',
             'description' => 'required',
             'additional_information' => 'required',
-            'user_id' => auth()->id(), 
+            // 'user_id' => auth()->id(), 
         ]);
 
         // Find the selected category
@@ -86,8 +88,8 @@ class SellFormController extends Controller
                 'price' => $request->input('price'),
                 'description' => $request->input('description'),
                 'additional_information' => $request->input('additional_information'),
-                // 'user_id' => $user->id,
                 'user_id' =>  $userId,
+
             ]);
 
             return redirect()->route('sellforms.index')->with('success', 'Sell Form created successfully.');
@@ -180,4 +182,56 @@ class SellFormController extends Controller
         SellForm::destroy($id);
         return back()->with('success', 'Sell Form deleted successfully.');
     }
+
+
+    public function accept($id)
+    {
+        $sellForm = SellForm::find($id);
+    
+        if ($sellForm) {
+            // Move the record to the landcards table
+            $this->moveToLandcards($sellForm);
+            return back()->with('success', 'Sell Form moved successfully.');
+        } else {
+            return back()->with('error', 'Sell Form not found.');
+            // or you might want to redirect to a specific page or handle this case differently
+        }
+    }
+    
+    private function moveToLandcards($sellForm)
+    {
+        $landimages = LandImages::all();
+    
+        if ($sellForm) {
+            // Assuming Landcard is the model for the landcards table
+            $landcard = new LandCard();
+    
+            // Remove the 'id' field before filling the new model
+            $sellformData = $sellForm->getAttributes();
+    
+            $landcard->fill($sellformData);
+    
+            // Assuming you want to set the 'image1' attribute of Landcard from the first image in LandImages
+            if ($landimages->isNotEmpty()) {
+                $landcard->image = $landimages->first()->image1; // Adjust this based on your actual field name in landimages
+            } else {
+                // Handle case where no images are found in the LandImages table
+                return back()->with('error', 'No Land Images found.');
+            }
+    
+            $landcard->save();
+    
+            // Optionally, you can delete the record from the sellforms table
+            // $sellForm->delete();
+    
+            return back()->with('success', 'Sell Form moved successfully.');
+        } else {
+            // Handle case where $sellForm is null
+            return back()->with('error', 'Sell Form not found.');
+            // or you might want to redirect to a specific page or handle this case differently
+        }
+    }
+    
+
+    
 }

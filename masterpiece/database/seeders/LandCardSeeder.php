@@ -25,8 +25,7 @@ class LandCardSeeder extends Seeder
             'governorate' => 'Zarqa',
             'district' => 'Birayn',
             'area' => '510 m2',
-            'description'=>'descriptions',
-            'additional_information'=>'additional_information',
+          
            
         ],
         [
@@ -36,8 +35,7 @@ class LandCardSeeder extends Seeder
             'governorate' => 'Madaba',
             'district' => 'Dhiban',
             'area' => '10000 m2',
-            'description'=>'descriptions',
-            'additional_information'=>'additional_information',
+            
         ],
         [
             'image' => 'images\jerash.png', 
@@ -46,8 +44,7 @@ class LandCardSeeder extends Seeder
             'governorate' => 'Jerash',
             'district' => 'Anaiba',
             'area' => '500 m2',
-            'description'=>'descriptions',
-            'additional_information'=>'additional_information',
+           
         ],
         [
             'image' => 'images\ham.png',
@@ -56,8 +53,7 @@ class LandCardSeeder extends Seeder
             'governorate' => 'Irbid',
             'district' => 'Ham',
             'area' => '1000 m2',
-            'description'=>'descriptions',
-            'additional_information'=>'additional_information',
+          
         ],
         [
             'image' => 'images\Al-Qastal.png', 
@@ -66,8 +62,7 @@ class LandCardSeeder extends Seeder
             'governorate' => 'Amman',
             'district' => 'Al-Qastal',
             'area' => '500 m2',
-            'description'=>'descriptions',
-            'additional_information'=>'additional_information',
+            
         ],
         [
             'image' => 'images\Iraqal-Amir.png', 
@@ -76,8 +71,7 @@ class LandCardSeeder extends Seeder
             'governorate' => 'Amman',
             'district' => 'Iraq al-Amir',
             'area' => '5000 m^2',
-            'description'=>'descriptions',
-            'additional_information'=>'additional_information',
+          
         ],
     ];
 
@@ -86,4 +80,4 @@ class LandCardSeeder extends Seeder
         LandCard::create($landcard);
     }
     }
-}
+} 

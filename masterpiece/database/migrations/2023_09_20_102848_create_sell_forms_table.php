@@ -28,7 +28,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('additional_information');
             $table->bigInteger('user_id')->unsigned()->nullable();
-
+            $table->string('status')->default('pending');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

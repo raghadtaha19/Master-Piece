@@ -44,6 +44,11 @@ class LandImagesController extends Controller
         
         $request->validate([
             'sell_form_id' => 'required|exists:sell_forms,id',
+            'image1' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+            'image2' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+            'image3' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+            'image4' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+
         ]);
 
     

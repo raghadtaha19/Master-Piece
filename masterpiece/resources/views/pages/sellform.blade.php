@@ -50,7 +50,7 @@
     
        
         
-    
+    <div>login first</div>
         <form method="POST" action="{{ route('sellform.store') }}" enctype="multipart/form-data">
             @csrf
 
@@ -88,7 +88,7 @@
                         <label for="idNumber">ID Number:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="idNumber" name="idNumber" placeholder="Your ID number..">
+                        <input type="text" id="idNumber" name="idNumber" placeholder="Your ID number.." value="{{ old('idNumber') }}">
                         @error('idNumber')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -135,7 +135,7 @@
                         <label for="governorate">Governorate:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="governorate" name="governorate" placeholder="Enter governorate ..">
+                        <input type="text" id="governorate" name="governorate" placeholder="Enter governorate .." value="{{ old('governorate') }}">
                         @error('governorate')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -146,7 +146,7 @@
                         <label for="directorate">Directorate:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="directorate" name="directorate" placeholder="Enter directorate ..">
+                        <input type="text" id="directorate" name="directorate" placeholder="Enter directorate .." value="{{ old('directorate') }}">
                         @error('directorate')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -158,7 +158,7 @@
                         <label for="village">Village:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="village" name="village" placeholder="Enter village ..">
+                        <input type="text" id="village" name="village" placeholder="Enter village .." value="{{ old('village') }}">
                         @error('village')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -170,7 +170,7 @@
                         <label for="basin">Basin:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="basin" name="basin" placeholder="Enter basin ..">
+                        <input type="text" id="basin" name="basin" placeholder="Enter basin .."  value="{{ old('basin') }}">
                         @error('basin')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -182,7 +182,7 @@
                         <label for="district">District:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="district" name="district" placeholder="Enter district ..">
+                        <input type="text" id="district" name="district" placeholder="Enter district .."  value="{{ old('district') }}">
                         @error('district')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -193,7 +193,7 @@
                         <label for="pieceNumber">Piece Number:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="pieceNumber" name="pieceNumber" placeholder="Enter piece number ..">
+                        <input type="text" id="pieceNumber" name="pieceNumber" placeholder="Enter piece number .."  value="{{ old('pieceNumber') }}">
                         @error('pieceNumber')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -205,7 +205,7 @@
                         <label for="area">Area:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="area" name="area" placeholder="Enter area..">
+                        <input type="text" id="area" name="area" placeholder="Enter area.."  value="{{ old('area') }}">
                         @error('area')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -216,7 +216,7 @@
                         <label for="price">Price:</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="price" name="price" placeholder="Enter price..">
+                        <input type="text" id="price" name="price" placeholder="Enter price.."  value="{{ old('price') }}">
                         @error('price')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -227,7 +227,7 @@
                         <label for="description">Description:</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="description" name="description" placeholder="Enter description .."></textarea>
+                        <textarea id="description" name="description" placeholder="Enter description .."  value="{{ old('description') }}"></textarea>
                         @error('description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -239,7 +239,7 @@
                         <label for="additionalinfo">Additional Info:</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="additionalinfo" name="additionalinfo" placeholder="Enter additional information .."></textarea>
+                        <textarea id="additionalinfo" name="additionalinfo" placeholder="Enter additional information .."  value="{{ old('additionalinfo') }}"></textarea>
                         @error('additionalinfo')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -251,7 +251,7 @@
                         <label for="landimage1">Land Image 1:</label>
                     </div>
                     <div class="col-75">
-                        <input type="file" id="landimage1" name="landimage1" />
+                        <input type="file" id="landimage1" name="landimage1"  value="{{ old('landimage1') }}"><br>
                         @error('landimage1')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -262,7 +262,7 @@
                         <label for="landimage2">Land Image 2:</label>
                     </div>
                     <div class="col-75">
-                        <input type="file" id="landimage2" name="landimage2" />
+                        <input type="file" id="landimage2" name="landimage2"  value="{{ old('landimage2') }}"><br>
                         @error('landimage2')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -274,7 +274,7 @@
                         <label for="landimage3">Land Image 3:</label>
                     </div>
                     <div class="col-75">
-                        <input type="file" id="landimage3" name="landimage3" />
+                        <input type="file" id="landimage3" name="landimage3"  value="{{ old('landimage3') }}"><br>
                         @error('landimage3')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -286,7 +286,7 @@
                         <label for="landimage4">Land Image 4:</label>
                     </div>
                     <div class="col-75">
-                        <input type="file" id="landimage4" name="landimage4" />
+                        <input type="file" id="landimage4" name="landimage4"  value="{{ old('landimage4') }}"><br>
                         @error('landimage4')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -301,16 +301,14 @@
                     </div>
                 </div>
                 
-
-
                 <div class="row">
                     @if (auth()->check())
                         <input class="btn btn-primary py-3 px-5" type="submit" value="Submit">
                     @else
-                        <button class="btn btn-primary py-3 px-5" type="button" disabled>Submit</button>
-                        <p class="text-danger">You must register in order to fill out the form.</p>
+                    <a href="{{ route('login', ['redirect' => url()->current()]) }}" class="btn btn-primary py-3 px-5">Login to Submit</a>
                     @endif
                 </div>
+                
             </div>
     </div>
     </form>

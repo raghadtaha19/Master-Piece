@@ -39,16 +39,10 @@ class LandCardController extends Controller
         'governorate' => 'required',
         'district' => 'required',
         'area' => 'required',
-        'description' => 'required',
-        'additional_information' => 'required',
-        
-
-        
+        'image' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
 
     ]);
-    // sell_form_id
-    // status_from_user
-    // status_from_admin
+   
     $selectedCategory = Category::find($request->input('category_id'));
     if ($selectedCategory) {
         $land_type = $selectedCategory->name;    
@@ -61,15 +55,12 @@ class LandCardController extends Controller
         'district' => $request->input('district'),
         'area' => $request->input('area'),
         'category_id' => $request->input('land_type'),
-        'description' => $request->input('description'),
-        'additional_information' => $request->input('additional_information'),
     ]);
 
     return redirect()->route('landcards.index')->with('success', 'Land Card created successfully');
 
 } else {
-    // Handle the case where the selected category does not exist
-    // return redirect()->route('landcards.create')->with('error', 'Selected category does not exist.');
+  
     return redirect()->route('landcards.create')->withInput()->with('error', 'Selected category does not exist.');
 
 }

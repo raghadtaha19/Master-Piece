@@ -67,7 +67,9 @@
                                             <th>District</th>
                                             <th>Piece Number</th>
                                             <th>User</th>
+                                            <th>Status</th>
                                             <th>Action</th>
+                                            <th>Status_Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -87,6 +89,7 @@
                                                 <td>{{ $sellform->district }}</td>
                                                 <td>{{ $sellform->piece_number }}</td>
                                                 <td>{{ $sellform->user->email }}</td>
+                                                <td>pending</td>
                                                 <td class="project-actions">
                                                     <div style="margin-bottom: 5px;">
                                                         <a class="btn btn-info btn-sm"
@@ -104,6 +107,35 @@
                                                                 onclick="return confirm('Are you sure you want to delete this Sell Form?')"
                                                                 style="width: 100%;">
                                                                 <i class="fas fa-trash"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                                <td class="project-actions">
+                                                    <form action="{{ route('sellforms.accept', $sellform->id) }}" method="post">
+                                                        @csrf
+                                                        @method('post')
+                                                        <button type="submit" class="btn btn-info btn-sm" style="width: 100%;">
+                                                            <i class="fas fa-pencil-alt"></i> Accept
+                                                        </button>
+                                                    </form>
+                                                    
+                                                    {{-- <div style="margin-bottom: 5px;">
+                                                        <a class="btn btn-info btn-sm"
+                                                            href="{{ route('sellforms.index', $sellform->id) }}"
+                                                            style="width: 100%;">
+                                                            <i class="fas fa-pencil-alt"></i> Accept
+                                                        </a>
+                                                    </div> --}}
+                                                    <div style="margin-bottom: 5px;">
+                                                        <form action="{{ route('sellforms.destroy', $sellform->id) }}"
+                                                            method="POST" style="display: inline;">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Are you sure you want to delete this Sell Form?')"
+                                                                style="width: 100%;">
+                                                                <i class="fas fa-trash"></i> Reject
                                                             </button>
                                                         </form>
                                                     </div>
