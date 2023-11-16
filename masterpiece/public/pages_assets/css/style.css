@@ -14,6 +14,59 @@
     z-index: 99;
 }
 
+.card {
+    box-sizing: border-box;
+    width: 190px;
+    height: 254px;
+    /* background: rgba(217, 217, 217, 0.58); */
+    border: 1px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+  }
+  
+  .card:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+  
+  .card:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+  
+  .card1{ width: 190px;
+    height: 254px;
+    background: rgb(241, 242, 244);
+    border-radius: 50px;
+    box-shadow: 
+    0px 0px 10px 0px rgb(0,181,139,0.2), 
+    0px 0px 20px 0px rgb(0,181,139,0.2), 
+    0px 0px 30px 0px rgb(0,181,139,0.2), 
+    0px 0px 40px 0px rgb(0,181,139,0.2);  
+    border: 1px solid #ccc;
+     overflow: hidden; 
+     width: 25%;
+     &:hover {
+        transform: scale(1.05);
+    }
+  }
+
+  
+  .d-block{
+    border-radius:50px;
+    
+  }
+
+
 
 /*** Spinner ***/
 #spinner {
@@ -159,6 +212,13 @@
         transition: .5s;
         opacity: 1;
     }
+    .best-deal .info-table {
+        margin-bottom: 45px;
+      }
+      .best-deal .info-table ul li span {
+        float: right !important;
+        width: auto !important;
+      }
 }
 
 
@@ -259,8 +319,8 @@
 
 /*** Category ***/
 .cat-item div {
-    background:white;
-    border: 3px dashed rgba(0, 185, 142, .3);
+    background:rgba(0, 185, 142,.3);
+    border: 3px solid rgba(0, 185, 142);
     transition: .5s;
 }
 
@@ -469,6 +529,16 @@
     margin-right: -15px;
     margin-left: -15px;
   }
+  .form-container{
+    border: solid #00B98E;
+border-width: 20px;  
+padding: 20px;         
+  }
+  .important-note {
+    color: red;
+    font-size: large; 
+}
+  
 
   .pb-5, .py-5 {
     padding-bottom: 3rem !important;
@@ -544,7 +614,7 @@
     display: inline-block;
   }
   
-  input[type=submit] {
+  /* input[type=submit] {
     background-color: #04AA6D;
     color: white;
     padding: 12px 20px;
@@ -552,28 +622,88 @@
     border-radius: 4px;
     cursor: pointer;
     float: right;
-  }
+  } */
   
-  input[type=submit]:hover {
+  /* input[type=submit]:hover {
     background-color: #45a049;
-  }
+  } */
+  .form-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #4f4f4f;
+    border-radius: 4px;
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    font-size: 19px;
+    color: black;
+    z-index: 1;
+    text-align: center;
+   }
+   
+   .form-button:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    top: 100%;
+    width: 140%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+   }
+   
+   .form-button:after {
+    content: "";
+    position: absolute;
+    left: 55%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.45);
+    top: 180%;
+    width: 160%;
+    height: 190%;
+    background-color: #39bda7;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+   }
+   
+   .form-button:hover {
+    color: #ffffff;
+    border: 1px solid #39bda7;
+   }
+   
+   .form-button:hover:before {
+    top: -35%;
+    background-color: #39bda7;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+   }
+   
+   .form-button:hover:after {
+    top: -45%;
+    background-color: #39bda7;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+   }
   .form-titles{
      text-align: center;
      margin-top: 50px;
   }
   
-  .container1 {
+  /* .container1 {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
     width:70%;
     margin: auto;
     
-  }
+  } */
   
   .col-25 {
     float: left;
-    width: 25%;
+    width: 13%;
     margin-top: 6px;
   }
   

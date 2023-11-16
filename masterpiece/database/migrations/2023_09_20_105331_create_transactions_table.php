@@ -15,13 +15,13 @@ return new class extends Migration
 
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('buyer_id');
-            $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('land_id');
-            $table->foreign('land_id')->references('id')->on('land_reservations')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('transaction_date');
-            $table->bigInteger('transaction_price');
-            $table->bigInteger('created_at');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('land_card_id');
+            $table->foreign('land_card_id')->references('id')->on('land_cards')->onDelete('cascade')->onUpdate('cascade');
+            // $table->string('transaction_date');
+            $table->bigInteger('transaction_price')->nullable();
+            $table->timestamps();
             
         });
 

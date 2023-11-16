@@ -20,7 +20,7 @@ return new class extends Migration
             $table->bigInteger('land_card_id')->unsigned();
             $table->foreign('land_card_id')->references('id')->on('land_cards')->onDelete('cascade')->onUpdate('cascade');
             $table->string('status')->nullable();
-            $table->date('reservation_date');
+            $table->timestamp('reservation_date');
             $table->string('available_land_message')->nullable();
             $table->string('sold_land_message')->nullable();
             $table->timestamps();

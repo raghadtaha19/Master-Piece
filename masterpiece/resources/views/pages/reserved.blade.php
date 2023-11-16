@@ -14,7 +14,7 @@
             <div class="row g-5 align-items-center">
                 
                     <div style="display: flex; justify-content: center; align-items: center;">
-                        <h1 class="mb-3">Land Already Reserved</h1>
+                        <h1 class="mb-3">You Have Already Reserved Land</h1>
                     </div>
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                         <img class="img-fluid rounded w-100" src="{{ asset('https://www.pacificsignandstamp.com/cdn/shop/products/49ad5ced-206e-5daf-9444-715df8104a05.jpg?v=1602008928') }}" alt="Already Reserved Image">
@@ -22,8 +22,10 @@
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                         <p style="color:red;font-size: 30px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">Important!!</p>
                         <p style="color:#0e2e50;font-size: 30px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">
-                            You have already reserved this land. You cannot make another reservation.
+                            You have already reserved land. You cannot make another reservation.
                         </p>
+                        <a href="{{ route('home') }}"class="btn btn-primary py-3 px-5">back to home</a>
+
                     </div>
             </div>
         </div>

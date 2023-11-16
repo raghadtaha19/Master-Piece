@@ -63,13 +63,13 @@
 
         <br> <br> <br>
         
-        <div id="tab-2" class="tab-pane fade show p-0">
+        {{-- <div id="tab-2" class="tab-pane fade show p-0">
             <div class="row g-4">
                 <div class="col-12 text-center">
                     <a class="btn btn-primary py-3 px-5" href="#">Browse More Property</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <br><br>
         <div class="col-12">
             <nav>

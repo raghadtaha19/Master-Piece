@@ -29,7 +29,7 @@ class FrontSellFormController extends Controller
             'firstName'=>'required|string|max:50',
             'lastName'=>'required|string|max:50',
             'phone' => ['required', 'numeric', 'regex:/(079|077|078)\d{7}/'],
-            'idNumber'=>'required|numeric|max:20',
+            'idNumber'=>'required|numeric',
             'land_type' => 'required',
             'governorate' => 'required|string|max:50',
             'directorate' => 'required|string|max:50',
@@ -41,10 +41,10 @@ class FrontSellFormController extends Controller
             'price' => 'required|numeric',
             'description' => 'required|string',
             'additionalinfo' => 'required|string',
-            'landimage1' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
-            'landimage2' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
-            'landimage3' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
-            'landimage4' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+            'landimage1' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp',
+            'landimage2' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp',
+            'landimage3' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp',
+            'landimage4' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp',
 
 
         ], [

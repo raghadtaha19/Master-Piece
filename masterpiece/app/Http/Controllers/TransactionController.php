@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\LandCard;
+use App\Models\LandReservation;
 
 class TransactionController extends Controller
 {
@@ -14,7 +17,11 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        
+        $landreservations = LandReservation::get();
+        // dd($landreservations);
+        return view('dashboard.transactions.index', compact('landreservations'));
+        
     }
 
     /**
@@ -24,7 +31,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +42,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +64,7 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
+        
     }
 
     /**
@@ -69,7 +76,7 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        
     }
 
     /**
@@ -80,6 +87,6 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        
     }
 }

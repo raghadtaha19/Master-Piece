@@ -60,8 +60,6 @@ Admins list
                   <td>{{ $i }}</td>
                   <td>{{ $admin->name }}</td>
                   <td>{{ $admin->email }}</td>
-                  {{-- <td>{{ $admin->mobile }} </td> --}}
-                  {{-- <td>{{ $admin->address }}</td> --}}
                   <td class="project-actions">
                     <a class="btn btn-info btn-sm" href="{{ route('admins.edit', $admin->id) }}">
                         <i class="fas fa-pencil-alt"></i>

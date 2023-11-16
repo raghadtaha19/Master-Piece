@@ -21,7 +21,6 @@
         <input type="password" placeholder="Enter your password">
         <a href="#">Forgot password?</a>
         <a href="index.html"><input type="button" class="button" value="Login"></a>
-        <!-- انا حطيت ال a -->
       </form>
       <div class="signup">
         <span class="signup">Don't have an account?

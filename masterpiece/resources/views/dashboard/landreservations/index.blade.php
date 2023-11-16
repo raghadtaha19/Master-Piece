@@ -47,12 +47,15 @@ Land Reservations list
             <tr>
                 <th>#ID</th>
                 <th>User</th>
-                <th>Land Card</th>
-                <th>Status</th>
+                <th>Governorate</th>
+                <th>District</th>
+                <th>Price</th>
+                <th>Area</th>
                 <th>Reservation Date</th>
-                <th>Available Land Message</th>
-                <th>Sold Land Message</th>
+                {{-- <th>Available Land Message</th> --}}
+                {{-- <th>Sold Land Message</th> --}}
                 <th>Action</th>
+                <th>Deal/NoDeal</th>
             </tr>
         </thead>
         <tbody>
@@ -61,10 +64,12 @@ Land Reservations list
                 <td>{{ $reservation->id }}</td>
                 <td>{{ $reservation->user->email }}</td>
                 <td>{{ $reservation->landCard->governorate }}</td>
-                <td>{{ $reservation->status }}</td>
+                <td>{{ $reservation->landCard->district }}</td>
+                <td>{{ $reservation->landCard->price }}</td>
+                <td>{{ $reservation->landCard->area }}</td>
                 <td>{{ $reservation->reservation_date }}</td>
-                <td>{{ $reservation->available_land_message }}</td>
-                <td>{{ $reservation->sold_land_message }}</td>
+                {{-- <td>{{ $reservation->available_land_message }}</td> --}}
+                {{-- <td>{{ $reservation->sold_land_message }}</td> --}}
                 <td class="project-actions">
                     <a class="btn btn-info btn-sm" href="{{ route('landreservations.edit', $reservation->id) }}">
                         <i class="fas fa-pencil-alt"></i> Edit
@@ -76,6 +81,27 @@ Land Reservations list
                         <button type="submit" class="btn btn-danger btn-sm"
                             onclick="return confirm('Are you sure you want to delete this reservation?')">Delete</button>
                     </form>
+                </td>
+                <td class="project-actions">
+                  <form action="{{ route('landreservations.deal', $reservation->id) }}" method="post">
+                    @csrf
+                      @method('post')
+                      <button type="submit" class="btn btn-info btn-sm" style="width: 100%;">
+                          <i class="fas fa-pencil-alt"></i> Deal
+                      </button>
+                  </form>
+
+                  <div style="margin-bottom: 5px;">
+                      <form action="{{ route('landreservations.destroy', $reservation->id) }}" method="POST" style="display: inline;">
+                          @method('DELETE')
+                          @csrf
+                          <button type="submit" class="btn btn-danger btn-sm"
+                              onclick="return confirm('Are you sure you want to delete this ?')"
+                              style="width: 100%;">
+                              <i class="fas fa-trash"></i> Not Deal
+                          </button>
+                      </form>
+                  </div>
                 </td>
             </tr>
             @endforeach

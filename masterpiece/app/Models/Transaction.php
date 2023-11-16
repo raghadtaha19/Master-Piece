@@ -10,19 +10,18 @@ class Transaction extends Model
     use HasFactory;
     public $timestamps = false; // Disable timestamps
     protected $fillable = [
-        'image1',
-        'image2',
-        'image3',
-        'image4',
-        'sell_form_id',
+        'user_id',
+        // 'transaction_price',
+        // 'transaction_date',
+     'land_card_id'
     ];
-    public function buyer()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'buyer_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function landReservation()
     {
-        return $this->belongsTo(LandReservation::class, 'land_id');
+        return $this->belongsTo(LandReservation::class, 'land_card_id');
     }
 }

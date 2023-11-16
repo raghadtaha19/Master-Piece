@@ -6,7 +6,9 @@ use App\Models\LandReservation;
 use App\Models\User;
 use App\Models\LandCard;
 use App\Models\Category;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LandReservationController extends Controller
 {
@@ -51,39 +53,44 @@ class LandReservationController extends Controller
 
     public function reserveAndRedirect(Request $request, $id)
     {
+        // Check if the user is authenticated
         if (auth()->check()) {
             $user_id = auth()->id();
+    
+            // Check if the user already has a reservation
+            $existingReservation = LandReservation::where('user_id', $user_id)->first();
+    
+            if ($existingReservation) {
+                // Redirect the user to a reserved page or handle it accordingly
+                return view('pages.reserved');
+            }
+    
+            $landcard = LandCard::find($id);
+    
+            if (!$landcard) {
+                return redirect()->route('home')->with('error', 'Land card not found.');
+            }
+    
+            // Create a new reservation
+            $landreservation = new LandReservation();
+            $landreservation->user_id = $user_id;
+            $landreservation->land_card_id = $landcard->id;
+            $landreservation->status = 'reserve';
+            $landreservation->reservation_date = now();
+            $landreservation->save();
+    
+            // Retrieve all land cards and categories (you may need to adjust this part based on your specific needs)
+            $landcards = LandCard::all();
+            $categories = Category::all();
+    
+            // Redirect to the 'reservation' view and pass data to the view
+            return view('pages.reservation', compact('categories', 'landcards', 'landreservation'));
         } else {
+            // If the user is not authenticated, redirect to the login page
             return redirect()->route('login');
         }
-    
-        $landcard = LandCard::find($id);
-    
-        // Check if the user has already made a reservation for this land card
-        $existingReservation = LandReservation::where('user_id', $user_id)
-            ->where('land_card_id', $landcard->id)
-            ->first();
-    
-        if ($existingReservation) {
-            return view('pages.reserved');
-        }
-    
-        $landreservation = new LandReservation();
-        $landreservation->user_id = $user_id;
-        $landreservation->land_card_id = $landcard->id;
-        $landreservation->status = 'reserve';
-        $landreservation->reservation_date = now();
-        $landreservation->save();
-    
-        // Retrieve all land cards
-        $landcards = LandCard::all();
-        $categories = Category::all();
-
-
-    
-        // Redirect to the 'home' route and pass data to the view
-        return view('pages.reservation', compact('categories','landcards', 'landreservation'));
     }
+    
     
     
 
@@ -131,4 +138,61 @@ class LandReservationController extends Controller
         LandReservation::destroy($id);
         return back()->with('success', 'Land Reservation deleted successfully.');
     }
+    public function deal($id)
+    {
+        $landReservation = LandReservation::find($id);
+    
+        if (!$landReservation) {
+            return back()->with('error', 'Land Reservation not found.');
+        }
+    
+        $user = User::find($landReservation->user_id);
+    
+        if (!$user) {
+            return back()->with('error', 'User not found.');
+        }
+    
+        try {
+            $this->moveToTransaction($landReservation);
+            return back()->with('success', 'Reservation Land moved successfully.');
+        } catch (\Exception $e) {
+            // Log the exception for debugging purposes
+            Log::error($e);
+            return back()->with('error', 'An error occurred while moving the reservation.');
+        }
+    }
+    
+
+    private function moveToTransaction($landReservation)
+    {
+        if (!$landReservation) {
+            return back()->with('error', 'Land Reservation not found.');
+        }
+    
+        $transaction = new Transaction();
+        $user_id = auth()->id();
+    
+        // Set the 'user_id' in the Transaction model
+        $transaction->user_id = $user_id;
+        // Set other attributes individually
+        $transaction->land_card_id = $landReservation->land_card_id;
+        // Add other attributes as needed
+    
+        try {
+            // Save the transaction before deleting the land reservation
+            $transaction->save();
+    
+            // Optionally, you can keep the reservation record if needed
+            // $landReservation->update(['transaction_id' => $transaction->id]);
+    
+            // Remove this line if you want to keep the reservation record
+            // $landReservation->delete();
+    
+            return back()->with('success', 'Land Reservation moved successfully.');
+        } catch (\Exception $e) {
+            Log::error("Error moving Land Reservation ID: {$landReservation->id} to Transaction. Error: " . $e->getMessage());
+            return back()->with('error', 'An error occurred while moving the reservation.');
+        }
+    }
+    
 }

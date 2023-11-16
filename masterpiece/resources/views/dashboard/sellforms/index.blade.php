@@ -119,14 +119,6 @@
                                                             <i class="fas fa-pencil-alt"></i> Accept
                                                         </button>
                                                     </form>
-                                                    
-                                                    {{-- <div style="margin-bottom: 5px;">
-                                                        <a class="btn btn-info btn-sm"
-                                                            href="{{ route('sellforms.index', $sellform->id) }}"
-                                                            style="width: 100%;">
-                                                            <i class="fas fa-pencil-alt"></i> Accept
-                                                        </a>
-                                                    </div> --}}
                                                     <div style="margin-bottom: 5px;">
                                                         <form action="{{ route('sellforms.destroy', $sellform->id) }}"
                                                             method="POST" style="display: inline;">

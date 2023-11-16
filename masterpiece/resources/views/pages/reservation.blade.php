@@ -24,7 +24,7 @@
                                <div class="mb-4">
                                 <p>Our dedicated team will reach out to you within five business days to arrange either an in-person or virtual meeting, tailored to your preference. We are committed to providing you with the highest level of service and look forward to discussing your needs in detail. Please rest assured that we are here to assist you in any way possible and are excited to connect with you soon!</p>
                             </div>
-                               
+                            <a href="{{ route('home') }}"class="btn btn-primary py-3 px-5">back to home</a>
                             </div>
                             
                         </div>

@@ -23,6 +23,11 @@
             </div> 
             <div class="col-md-6 animated fadeIn">
                 <div class="owl-carousel header-carousel">
+                    {{-- <div class="owl-carousel-item">
+                        <video class="img-fluid" autoplay>
+                            <source src="{{ asset('images\video (2160p).mp4') }}" type="video/mp4">
+                        </video>
+                    </div> --}}
                     <div class="owl-carousel-item">
                         <img class="img-fluid" src="{{ asset('images/1.jpg') }}" alt="">
                     </div>
@@ -166,10 +171,10 @@
                                             {{ $item->land_type }}</div>
                                     </div>
                                     @if ($landreservation->where('land_card_id', $item->id)->count() > 0)
-                                    <div class=" start-0 top-0 mx-4 pt-1 px-3 bg-danger text-white">
+                                    <div class=" start-0 top-0 mx-4 pt-1 px-3 bg-danger ">
                                         Reserved
                                     </div>
-                                @endif
+                                    @endif
                                     <div class="p-4 pb-0">
                                         <h5 class="text-primary mb-3">{{ $item->price }}</h5>
                                         <a class="d-block h5 mb-2"

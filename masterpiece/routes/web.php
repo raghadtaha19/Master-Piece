@@ -16,6 +16,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontSellFormController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\ContactController;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::view('/login', 'auth.login')->name('login');
@@ -65,6 +66,7 @@ Route::resource('dashboard/landcards', LandCardController::class)->middleware('a
 Route::resource('dashboard/landreservations', LandReservationController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/transactions', TransactionController::class)->middleware('adminMiddleWare');
 Route::post('/sellforms/{id}/accept', [SellFormController::class,'accept'])->name('sellforms.accept');
+Route::post('/landreservation/{id}/deal', [LandReservationController::class,'deal'])->name('landreservations.deal');
 
 Route::get('/dashboard_login', function () {
     return view('dashboard.dashboard_login');
@@ -94,3 +96,9 @@ Route::get('/filterlands', [PagesController::class, 'filterlands'])->name('filte
 
 Route::get('auth/google', [GoogleAuthController::class,'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleAuthController::class,'callbackGoogle']);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//contact
+Route::get('contact-us', [ContactController::class, 'index']);
+Route::post('contact-us', [ContactController::class, 'store'])->name('contactus.store');

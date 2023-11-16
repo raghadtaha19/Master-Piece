@@ -1,6 +1,6 @@
 @extends('dashboard.dashboard_layouts.master')
 
-@section('title', 'Create New partner')
+@section('title', 'Create New reservation')
 
 
 @section('css')
