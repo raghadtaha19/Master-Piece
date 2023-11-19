@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\LandCard;
 use App\Models\LandReservation;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -49,39 +50,56 @@ public function reservation(){
     return view('pages.reservation');
 }
 public function filterlands(Request $request)
-{
+{// Check the request data
+// dd($request->all());
+
     // Get filter parameters from the request
     $area = $request->input('area');
-    $price = $request->input('price');
     $governorate = $request->input('governorate');
+    $minArea = $maxArea = 0;
+    $cat_name=$request->input('category_name');
 
-    // Query your database to filter land cards based on the selected options
-    $filteredLandCards = LandCard::where(function ($query) use ($area, $price, $governorate) {
-        if ($area) {
-            // Check if $area contains a valid range
-            if (strpos($area, '-') !== false) {
-                // Parse the area range and add conditions to the query
-                list($minArea, $maxArea) = explode('-', $area);
-                $query->whereBetween('area', [$minArea, $maxArea]);
-            }
+    if ($area !== "") {
+        
+        if (strpos($area, '-') !== false) {
+            // Split the string into an array using the hyphen as the delimiter
+            list($minArea, $maxArea) = explode('-', $area);
+    
+            // Convert the values to integers
+            $minArea = (int)$minArea;
+            $maxArea = (int)$maxArea;
         }
+    }
+    
 
-        if ($price) {
-            // Check if $price contains a valid range
-            if (strpos($price, '-') !== false) {
-                // Parse the price range and add conditions to the query
-                list($minPrice, $maxPrice) = explode('-', $price);
-                $query->whereBetween('price', [$minPrice, $maxPrice]);
-            }
+    // dd($minArea);
+    $query = DB::table('land_cards');
+
+    if ($minArea != 0) {
+        $query->whereBetween('area', [$minArea, $maxArea]);
+    }
+
+    if (!empty($governorate)) {
+        $query->where('governorate', $governorate);
+    }
+    if (!empty($cat_name)) {
+        $query->where('land_type', $cat_name);
+    }
+    
+// dd($query);
+    $landcards = $query->paginate(6);
+    $itemCount = $query->count();
+            if( $itemCount==0){
+                $message = "No lands found .";
+                return view('pages.categories', compact('landcards', 'itemCount',  'message'));
+            
+            }else
+        
+        {
+            return view('pages.categories', compact('landcards','itemCount'));
         }
-
-        if ($governorate) {
-            $query->where('governorate', $governorate);
-        }
-    })->get();
-
-    // Return a view with the filtered land cards
-    return view('pages.categories', ['landcards' => $filteredLandCards]);
 }
 
 }
+
+

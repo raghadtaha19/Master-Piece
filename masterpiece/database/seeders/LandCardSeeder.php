@@ -73,6 +73,96 @@ class LandCardSeeder extends Seeder
             'area' => '5000 m^2',
           
         ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
+        [
+            'image' => 'images\Iraqal-Amir.png', 
+            'land_type' => 'Agricultural Land',
+            'price' => '40.000 Jd',
+            'governorate' => 'Amman',
+            'district' => 'Iraq al-Amir',
+            'area' => '5000 m^2',
+          
+        ],
     ];
 
 
