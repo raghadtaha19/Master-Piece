@@ -85,7 +85,7 @@
                             <div class="property-item rounded overflow-hidden">
                                 <div class="position-relative overflow-hidden">
                                     <a href="{{ route('category.lands', ['category' => 'Residential lands']) }}"><img
-                                            class="img-fluid" src="{{ asset($landcard->image) }}" alt=""></a>
+                                            class="img-fluid" src="{{ asset('images/' .$landcard->image) }}" alt=""></a>
                                     <div
                                         class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
                                         {{ $landcard->land_type }}

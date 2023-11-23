@@ -17,6 +17,8 @@ class LandCardController extends Controller
        return view('dashboard.landcards.index', compact('users','landcards','categories'));
     }
 
+   
+
     public function create()
     {
         $categories = Category::all();
@@ -114,5 +116,23 @@ public function update(Request $request, $id)
         return $relativeImagePath;
 
     }
+
+    public function profile_land($id, Request $request)
+{
+    $categories = Category::all();
+    $user_id = auth()->id();
+
+    $landcards = LandCard::whereHas('landReservations', function ($query) use ($user_id) {
+        $query->where('user_id', $user_id);
+    })->get();
+//landReservations:اسم الفنكشن بالمودل
+    if ($landcards->isNotEmpty()) {
+        return view('pages.land', compact('landcards', 'categories'));
+    } else {
+        // Handle the case where no land card is found with reservations for the given user
+        return redirect()->back()->with('error', 'No reserved land found for the user.');
+    }
+}
+
 }
 

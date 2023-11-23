@@ -26,9 +26,9 @@ class LandCard extends Model
 
     ];
     public function sellForm()
-    {
-        return $this->belongsTo(SellForm::class);
-    }
+{
+    return $this->belongsTo(SellForm::class, 'sell_form_id');
+}
 
     public function landReservations()
     {

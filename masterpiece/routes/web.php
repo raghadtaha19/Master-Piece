@@ -60,6 +60,7 @@ Route::resource('dashboard/users', UserController::class)->middleware('adminMidd
 Route::resource('dashboard/admins', AdminController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/categories', CategoryController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/sellforms', SellFormController::class)->middleware('adminMiddleWare');
+Route::match(['get', 'post'],'profile/land/{id}',  [LandCardController::class, 'profile_land'])->name('land');
 Route::resource('dashboard/addresses', AddressController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/landimages', LandImagesController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/landcards', LandCardController::class)->middleware('adminMiddleWare');

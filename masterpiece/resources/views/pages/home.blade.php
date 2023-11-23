@@ -164,7 +164,8 @@
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
                                         <a href="{{ route('singlepage', ['product' => $item->id]) }}"><img
-                                                class="img-fluid" src="{{ asset($item->image) }}" alt="Zarqa Image">
+                                                class="img-fluid" src="{{ asset('images/' . $item->image) }}">
+                                               
                                         </a>
                                         <div
                                             class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">

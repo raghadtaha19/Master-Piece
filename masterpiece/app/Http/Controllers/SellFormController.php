@@ -20,10 +20,15 @@ class SellFormController extends Controller
     {
         $categories = Category::all();
         $users = User::all();
-        $sellforms=SellForm::where ('Status','=','pending')->get();
-        return view('dashboard.sellforms.index', compact('users','categories','sellforms'));
+        $sellforms=SellForm::all();
+       
+        $landcards = LandCard::with('sellForm')->get();
+
+
+        return view('dashboard.sellforms.index', compact('users','categories','sellforms','landcards'));
         
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -34,6 +39,7 @@ class SellFormController extends Controller
 {
     $users=User::all();
     $categories = Category::all(); 
+
     return view('dashboard.sellforms.create', compact('categories','users'));
 }
 
@@ -213,7 +219,7 @@ class SellFormController extends Controller
     
             // Assuming you want to set the 'image1' attribute of Landcard from the first image in LandImages
             if ($landimages->isNotEmpty()) {
-                $landcard->image = $landimages->first()->image1; // Adjust this based on your actual field name in landimages
+                $landcard->image = $landimages->last()->image1; // Adjust this based on your actual field name in landimages
             } else {
                 // Handle case where no images are found in the LandImages table
                 return back()->with('error', 'No Land Images found.');

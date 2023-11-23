@@ -44,16 +44,16 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active" style="border-radius:50px">
-                    <img class="d-block w-100" src="{{ asset($landcard->image) }}" alt="First slide" >
+                    <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="First slide" >
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset($landcard->image) }}" alt="Second slide">
+                    <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset($landcard->image) }}" alt="Third slide">
+                    <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Third slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset($landcard->image) }}" alt="Fourth slide">
+                    <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Fourth slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

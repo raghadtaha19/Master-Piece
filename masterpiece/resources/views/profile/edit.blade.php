@@ -73,6 +73,13 @@
             </div>
         </div>
     </div>
+    <form action="{{ route('land', ['id' => auth()->id()]) }}" method="post">
+        @csrf
+        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+        <button type="submit">Submit</button>
+    </form>
+    
+    
     
 </section>
 @endsection

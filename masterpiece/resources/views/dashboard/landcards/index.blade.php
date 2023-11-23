@@ -50,7 +50,7 @@ Land Cards list
                                         <th style="text-align: center; vertical-align: middle;">District</th>
                         
                                         <th style="text-align: center; vertical-align: middle;">Area</th>
-                                        <th style="text-align: center; vertical-align: middle;">sell_form_id</th>
+                                        {{-- <th style="text-align: center; vertical-align: middle;">sell_form_id</th> --}}
                                         
                                         {{-- <th style="text-align: center; vertical-align: middle;">Status from User</th> --}}
                                         {{-- <th style="text-align: center; vertical-align: middle;">Status from Admin</th> --}}
@@ -66,7 +66,7 @@ Land Cards list
                                         <tr>
                                             <td style="text-align: center; vertical-align: middle;">{{ $landcard->id }}</td>
 
-                                            <td style="text-align: center; vertical-align: middle;"><img src="{{ asset($landcard->image) }}"  width="100px" height="100px">
+                                            <td style="text-align: center; vertical-align: middle;"><img src="{{ asset('images/' . $landcard->image) }}"  width="100px" height="100px">
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">{{ $landcard->land_type }}</td>
 
@@ -75,9 +75,9 @@ Land Cards list
                                             <td style="text-align: center; vertical-align: middle;">{{ $landcard->governorate }}</td>
                                             <td style="text-align: center; vertical-align: middle;">{{ $landcard->district }}</td>
                                             <td style="text-align: center; vertical-align: middle;">{{ $landcard->area }}</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                {{ $landcard->sellform->user->email ?? 'N/A' }}
-                                            </td>
+                                            {{-- <td style="text-align: center; vertical-align: middle;">
+                                                {{ $landcard->sellForm->id }}
+                                            </td> --}}
                                             
                                             {{-- <td style="text-align: center; vertical-align: middle;">{{ $landcard->status_from_user }}</td> --}}
                                             {{-- <td style="text-align: center; vertical-align: middle;">{{ $landcard->status_from_admin }}</td> --}}
