@@ -28,6 +28,9 @@ class PagesController extends Controller
     public function contact(){
         return view('pages.contact');
     }
+    public function services(){
+        return view('pages.services');
+    }
    
    
     public function register(){

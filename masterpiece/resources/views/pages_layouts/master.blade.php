@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div id="preloader"></div>
     @include('sweetalert::alert')
 
     <div class="container-xxl bg-white p-0">

@@ -17,6 +17,8 @@
                     class="nav-item nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
                 <a href="{{ route('sellform') }}"
                     class="nav-item nav-link {{ request()->routeIs('sellform') ? 'active' : '' }}">Sell Form</a>
+                <a href="{{ route('services') }}"
+                    class="nav-item nav-link {{ request()->routeIs('services') ? 'active' : '' }}">Services</a>
                 <a href="{{ route('about') }}"
                     class="nav-item nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About</a>
                 <a href="{{ route('contact') }}"

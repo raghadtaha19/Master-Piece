@@ -700,7 +700,27 @@ padding: 20px;
     margin: auto;
     
   } */
-  
+  .servecies{
+    margin: 50px;
+  }
+
+  .para1{
+    margin-bottom: 80px;
+  }
+  .services_row{
+  margin-left: 40px;
+  margin-right: 40px;
+  }
+
+  .large-icon{
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #00B98E;
+  }
+
+
+   
+
   .col-25 {
     float: left;
     width: 13%;
