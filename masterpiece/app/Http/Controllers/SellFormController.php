@@ -63,6 +63,7 @@ class SellFormController extends Controller
             'area' => 'required',
             'price' => 'required',
             'description' => 'required',
+            'user_email' => 'required',
             'additional_information' => 'required',
             // 'user_id' => auth()->id(), 
         ]);

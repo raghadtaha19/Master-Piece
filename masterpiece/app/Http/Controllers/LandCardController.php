@@ -37,11 +37,11 @@ class LandCardController extends Controller
     $request->validate([
         
         'category_id' => 'required',
-        'price' => 'required',
+        'price' => 'required|numeric',
         'governorate' => 'required',
         'district' => 'required',
         'area' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+        'image' => 'required|image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:2048',
 
     ]);
    
@@ -80,6 +80,13 @@ public function edit($id)
 
 public function update(Request $request, $id)
 {
+
+    $request->validate([
+        
+        'price' => 'numeric',
+        'image' => 'required|image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:2048',
+
+    ]);
     $data = $request->except(['_token', '_method']);
 
     // Find the LandCard by ID

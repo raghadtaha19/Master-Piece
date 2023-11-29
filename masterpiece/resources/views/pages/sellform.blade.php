@@ -33,7 +33,14 @@
 
 
 
-    @include('pages_layouts.search')
+    {{-- @include('pages_layouts.search') --}}
+     <!-- Search Start -->
+<div class="container-fluid bg-primary " style="padding: 35px;">
+</div>
+
+<!-- Search End -->
+
+
     <div class="container-fluid pb-5">
         <!-- Commission Information -->
         <div class="commission-info bg-light p-30 mb-4">
@@ -48,7 +55,7 @@
             </div>
         @endif
 
-        <h2>Fill the Form: <span class="important-note">(Important: You have to login before submitting)</span></h2>
+        <h2 style="margin-top: 70px;margin-bottom:20px;">Fill the form: <span class="important-note">(Important: You have to login before submitting)</span></h2>
         
         <form method="POST" action="{{ route('sellform.store') }}" enctype="multipart/form-data">
             @csrf
@@ -60,7 +67,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="firstName" name="firstName" placeholder="Your first name.."
-                            value="{{ auth()->check() ? auth()->user()->first_name : old('first_name') }}" required
+                            value="{{ auth()->check() ? auth()->user()->first_name : old('first_name') }}" 
                             autofocus>
                         @error('firstName')
                             <span class="text-danger">{{ $message }}</span>
@@ -73,7 +80,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="lastName" name="lastName" placeholder="Your last name.."
-                            value="{{ auth()->check() ? auth()->user()->last_name : old('last_name') }}" required autofocus>
+                            value="{{ auth()->check() ? auth()->user()->last_name : old('last_name') }}"  autofocus>
                         @error('lastName')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -86,7 +93,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="idNumber" name="idNumber" placeholder="Your ID number.."
-                            value="{{ old('idNumber') }}" required autofocus>
+                            value="{{ old('idNumber') }}"  autofocus>
                         @error('idNumber')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -99,7 +106,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="phone" name="phone" placeholder="Your phone number.."
-                            value="{{ auth()->check() ? auth()->user()->phone_number : old('phone') }}" required
+                            value="{{ auth()->check() ? auth()->user()->phone_number : old('phone') }}" 
                             autofocus>
                         @error('phone')
                             <span class="text-danger">{{ $message }}</span>
@@ -114,7 +121,7 @@
                         <label for="land_type">Land Type:</label>
                     </div>
                     <div class="col-75">
-                        <select name="land_type" class="form-control" required autofocus
+                        <select name="land_type" class="form-control"  autofocus
                             style="background: transparent url('/images/arrow-down.png') no-repeat right ; background-size: 15px; -webkit-appearance: none; -moz-appearance: none; appearance: none; ">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -135,7 +142,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="governorate" name="governorate" placeholder="Enter governorate .."
-                            value="{{ old('governorate') }}" required autofocus>
+                            value="{{ old('governorate') }}"  autofocus>
                         @error('governorate')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -147,7 +154,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="directorate" name="directorate" placeholder="Enter directorate .."
-                            value="{{ old('directorate') }}" required autofocus>
+                            value="{{ old('directorate') }}"  autofocus>
                         @error('directorate')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -160,7 +167,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="village" name="village" placeholder="Enter village .."
-                            value="{{ old('village') }}" required autofocus>
+                            value="{{ old('village') }}"  autofocus>
                         @error('village')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -173,7 +180,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="basin" name="basin" placeholder="Enter basin .."
-                            value="{{ old('basin') }}" required autofocus>
+                            value="{{ old('basin') }}"  autofocus>
                         @error('basin')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -186,7 +193,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="district" name="district" placeholder="Enter district .."
-                            value="{{ old('district') }}" required autofocus>
+                            value="{{ old('district') }}"  autofocus>
                         @error('district')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -198,7 +205,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="pieceNumber" name="pieceNumber" placeholder="Enter piece number .."
-                            value="{{ old('pieceNumber') }}" required autofocus>
+                            value="{{ old('pieceNumber') }}"  autofocus>
                         @error('pieceNumber')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -211,7 +218,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="area" name="area" placeholder="Enter area.."
-                            value="{{ old('area') }}" required autofocus>
+                            value="{{ old('area') }}"  autofocus>
                         @error('area')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -223,7 +230,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="price" name="price" placeholder="Enter price.."
-                            value="{{ old('price') }}" required autofocus>
+                            value="{{ old('price') }}"  autofocus>
                         @error('price')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -235,7 +242,7 @@
                     </div>
                     <div class="col-75">
                         <textarea id="description" name="description" placeholder="Enter description .." value="{{ old('description') }}"
-                            required autofocus></textarea>
+                             autofocus></textarea>
                         @error('description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -248,7 +255,7 @@
                     </div>
                     <div class="col-75">
                         <textarea id="additionalinfo" name="additionalinfo" placeholder="Enter additional information .."
-                            value="{{ old('additionalinfo') }}" required autofocus></textarea>
+                            value="{{ old('additionalinfo') }}"  autofocus></textarea>
                         @error('additionalinfo')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -315,7 +322,7 @@
                         <input class="btn btn-primary py-3 px-5" type="submit" value="Submit" >
                     @else
                         <a href="{{ route('login', ['redirect' => url()->current()]) }}"
-                            class="form-button">Login to Submit</a>
+                            class="form-button">Login befor Submit</a>
                     @endif
                 </div>
 

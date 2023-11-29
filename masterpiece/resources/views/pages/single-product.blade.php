@@ -35,48 +35,48 @@
 
     <!-- Shop Detail Start -->
     <div class="container-fluid pb-5">
-    <div class="row px-xl-5 align-items-stretch">
-        <div id="carouselExampleIndicators" class="col-lg-6 carousel  slide" data-ride="carousel" >
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active" style="border-radius:50px">
-                    <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="First slide" >
+        <div class="row px-xl-5 align-items-stretch">
+            <div id="carouselExampleIndicators" class="col-lg-6 carousel  slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="border-radius:50px">
+                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Third slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Fourth slide">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Third slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Fourth slide">
-                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
 
-        <div class="col-lg-6 card1 h-auto mb-4 ">
-            <div class="h-100 p-4 d-flex flex-column">
-                <h2 class="text-primary mb-3">{{ $landcard->governorate }}</h2>
-                <p class="mb-3"><strong>District:</strong> {{ $landcard->district }}</p>
-                <p class="mb-3"><strong>Price:</strong> {{ $landcard->price }}</p>
-                <p class="mb-3"><strong>Area:</strong> {{ $landcard->area }}</p>
-                <p class="mb-3"><strong>Land Type:</strong> {{ $landcard->land_type }}</p>
+            <div class="col-lg-6 card1 h-auto mb-4 ">
+                <div class="h-100 p-4 d-flex flex-column">
+                    <h2 class="text-primary mb-3">{{ $landcard->governorate }}</h2>
+                    <p class="mb-3"><strong>District:</strong> {{ $landcard->district }}</p>
+                    <p class="mb-3"><strong>Price:</strong> {{ $landcard->price }}</p>
+                    <p class="mb-3"><strong>Area:</strong> {{ $landcard->area }}</p>
+                    <p class="mb-3"><strong>Land Type:</strong> {{ $landcard->land_type }}</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <div class="row px-xl-5">
         <div class="col">
@@ -103,8 +103,9 @@
                         id="reservation-form">
                         @csrf
                         <input type="hidden" name="reservation_date" id="reservation_date" required>
+                        <input type="hidden" name="landcard_data" value="{{ json_encode($landcard) }}">
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <button type="submit" class="btn btn-primary py-3 px-5">Reserve Now!</button>
+                            <button type="submit" class="btn btn-primary py-3 px-5">Go to paypal</button>
                         </div>
                     </form>
                 </div>

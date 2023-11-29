@@ -29,7 +29,12 @@
         <!-- Header End -->
 
 
-        @include('pages_layouts.search')
+        {{-- @include('pages_layouts.search') --}}
+        <!-- Search Start -->
+        <div class="container-fluid bg-primary " style="padding: 35px;">
+        </div>
+
+        <!-- Search End -->
 
 
         <!-- About Start -->

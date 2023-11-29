@@ -27,7 +27,12 @@
     <!-- Header End -->
 
 
-    @include('pages_layouts.search')
+    {{-- @include('pages_layouts.search') --}}
+    <!-- Search Start -->
+    <div class="container-fluid bg-primary " style="padding: 35px;">
+    </div>
+
+    <!-- Search End -->
 
 
     <!-- Contact Start -->
@@ -84,29 +89,32 @@
                 </div>
                 <div class="col-md-6">
                     <div class="wow fadeInUp" data-wow-delay="0.5s">
-                            @if(Session::has('success'))
+                        @if (Session::has('success'))
                             <div class="alert alert-success">
-                                {{Session::get('success')}}
+                                {{ Session::get('success') }}
                             </div>
                         @endif
                         <form method="POST" action="{{ route('contactus.store') }}">
                             @csrf
-                            <div class="row g-3">
+                            <div class="row g-3" style="margin-top: 15px">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control mb-3" name="name" id="name"
+                                            placeholder="Your Name">
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control mb-3" name="email" id="email"
+                                            placeholder="Your Email">
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" name="subject"  placeholder="Subject">
+                                        <input type="text" class="form-control mb-3" id="subject" name="subject"
+                                            placeholder="Subject">
                                         <label for="subject">Subject</label>
                                     </div>
                                 </div>

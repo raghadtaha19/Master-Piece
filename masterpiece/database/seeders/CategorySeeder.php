@@ -19,15 +19,15 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'name' => 'Agricultural Land',
-                'image' => 'images/icon-apartment.png',
+                'image' => 'icon-apartment.png',
             ],
             [
                 'name' => 'Residential Land',
-                'image' => 'images/icon-villa.png',
+                'image' => 'icon-villa.png',
             ],
             [
                 'name' => 'Commercial Land',
-                'image' => 'images/icon-house.png',
+                'image' => 'icon-house.png',
             ],
         ];
     

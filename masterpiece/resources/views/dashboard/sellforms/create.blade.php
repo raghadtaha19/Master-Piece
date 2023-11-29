@@ -36,8 +36,8 @@ Create New Sell Form
 
     <div class="form-group">
         <label for="user_id">User Email:</label>
-        <input type="email" name="user_id" class="form-control" placeholder="Enter email" required>
-        @error('user_id')<span class="text-danger">{{ $message }}</span>@enderror
+        <input type="email" name="user_email" class="form-control" placeholder="Enter email" required>
+        @error('user_email')<span class="text-danger">{{ $message }}</span>@enderror
     </div>
 
     <div class="form-group">

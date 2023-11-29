@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -28,22 +29,31 @@ class CategoryController extends Controller
             'image' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
         ]);
 
-       
-        $relativeImagePath = null;
-        $newImageName = uniqid() . '-' . $request->addedCategoryName . '.' . $request->file('image')->extension();
-        $relativeImagePath = 'assets/images/' . $newImageName;
-        $request->file('image')->move(public_path('assets/images'), $newImageName);
-        
-       
+    $categories = new Category();
 
-       
+     
 
-    Category::create([
-        'name' => $request->input('name'),
-        'image' => $relativeImagePath,
-    ]);
-    return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        $categories->name = $request->input('name');
+
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName); // Upload the image to the public/images directory
+            $categories->image = $imageName;
+            $categories->save();
+
+        }
+
+
+        return redirect()->route('categories.index')->with('success', 'category created successfully');
     }
+
+
+
+
+
+
 
     public function show(Category $category)
     {
@@ -56,26 +66,29 @@ class CategoryController extends Controller
         return view('dashboard.categories.edit', compact('categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        $request->validate([
-            'name' => 'required|string:100',
-            'image' => 'required|image|mimes:png,gif,bmp,svg,webp|max:2048',
-        ]);
+       
+        $categories = Category::findOrFail($id);
+
+        $categories->name = $request->input('name');
         
-        $data = $request->except(['_token', '_method']);
 
-        // Check if a new image was uploaded
-        if ($request->hasFile('image')) {
-            $newImage = $this->storeImage($request);
-
-            // Update the image column only if a new image was uploaded
-            $data['image'] = $newImage;
+        if ($request->hasFile('new_image')) {
+            $image = $request->file('new_image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $categories->image = $imageName;
         }
 
-        Category::where('id', $id)->update($data);
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
-    }
+
+        $categories->save();
+
+        return redirect()->route('categories.index')->with('success', 'category updated successfully');
+   }
+
+
+
 
     public function destroy($id)
     {
@@ -84,12 +97,6 @@ class CategoryController extends Controller
     }
 
    
-    // public function storeImage($request)
-    // {
-    //     $newImageName = uniqid() . '-' . $request->addedCategoryName . '.' . $request->file('image')->extension();
-    //     $relativeImagePath = 'assets/images/' . $newImageName;
-    //     $request->file('image')->move(public_path('assets/images'), $newImageName);
-    //     return $relativeImagePath;
+ 
 
-    // }
 }

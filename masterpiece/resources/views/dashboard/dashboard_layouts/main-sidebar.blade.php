@@ -6,8 +6,8 @@
       class="brand-image img-circle elevation-3" style="opacity:.8">
     <span class="brand-text font-weight-bolder font-size-300px">Landi</span>
     <div class="info">
-      <h5 style=" color:#53A798; display: inline-block; margin-right: 10px; margin-top:20px; margin-left:10px">Welcome
-        back, {{ session('name') }}</h5>
+      <h6 style=" color:#53A798; display: inline-block; margin-right: 10px; margin-top:20px; margin-left:10px">Welcome
+        back, {{ session('name') }}</h6>
     </div>
   </a>
 
@@ -54,12 +54,12 @@
             <p>Land Images</p>
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="{{ url('dashboard/sellforms') }}" class="nav-link">
             <i class="fas fa-handshake nav-icon"></i>
             <p>Sell Forms</p>
           </a>
-        </li>
+        </li> --}}
         {{-- <li class="nav-item">
           <a href="{{ url('dashboard/addresses') }}" class="nav-link">
             <i class="fas fa-map-marked-alt nav-icon"></i>

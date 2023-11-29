@@ -82,9 +82,10 @@ class LandReservationController extends Controller
             // Retrieve all land cards and categories (you may need to adjust this part based on your specific needs)
             $landcards = LandCard::all();
             $categories = Category::all();
-    
+            $landcardData = json_decode($request->input('landcard_data'));
+// dd($landcardData);
             // Redirect to the 'reservation' view and pass data to the view
-            return view('pages.reservation', compact('categories', 'landcards', 'landreservation'));
+            return view('pages.paypal', compact('categories', 'landcardData', 'landreservation', 'landcards'));
         } else {
             // If the user is not authenticated, redirect to the login page
             return redirect()->route('login');

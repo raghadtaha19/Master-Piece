@@ -17,6 +17,8 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontSellFormController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\EmailController;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::view('/login', 'auth.login')->name('login');
@@ -60,7 +62,6 @@ Route::resource('dashboard/users', UserController::class)->middleware('adminMidd
 Route::resource('dashboard/admins', AdminController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/categories', CategoryController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/sellforms', SellFormController::class)->middleware('adminMiddleWare');
-Route::match(['get', 'post'],'profile/land/{id}',  [LandCardController::class, 'profile_land'])->name('land');
 Route::resource('dashboard/addresses', AddressController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/landimages', LandImagesController::class)->middleware('adminMiddleWare');
 Route::resource('dashboard/landcards', LandCardController::class)->middleware('adminMiddleWare');
@@ -68,6 +69,7 @@ Route::resource('dashboard/landreservations', LandReservationController::class)-
 Route::resource('dashboard/transactions', TransactionController::class)->middleware('adminMiddleWare');
 Route::post('/sellforms/{id}/accept', [SellFormController::class,'accept'])->name('sellforms.accept');
 Route::post('/landreservation/{id}/deal', [LandReservationController::class,'deal'])->name('landreservations.deal');
+Route::match(['get', 'post'],'profile/land/{id}',  [LandCardController::class, 'profile_land'])->name('land');
 
 Route::get('/dashboard_login', function () {
     return view('dashboard.dashboard_login');
@@ -104,3 +106,17 @@ Route::get('auth/google/call-back', [GoogleAuthController::class,'callbackGoogle
 //contact
 Route::get('contact-us', [ContactController::class, 'index']);
 Route::post('contact-us', [ContactController::class, 'store'])->name('contactus.store');
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::post('paypal/payment', [PaypalController::class ,'payment'])->name('paypal');
+Route::get('paypal/success', [PaypalController::class ,'success'])->name('paypal_success');
+Route::get('paypal/cancel', [PaypalController::class ,'cancel'])->name('paypal_cancel');
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+// send email to all users from dashboard
+
+Route::controller(EmailController::class)->group(function () {
+    Route::post('send-email-to-all-users', 'sendEmailToAllUsers');
+    Route::get('send-email', 'index');
+});

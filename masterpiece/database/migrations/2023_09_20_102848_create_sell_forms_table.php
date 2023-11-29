@@ -26,6 +26,7 @@ return new class extends Migration
             $table->bigInteger('area');
             $table->bigInteger('price');
             $table->text('description');
+            $table->text('user_email')->nullable();
             $table->text('additional_information');
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('status')->default('pending');

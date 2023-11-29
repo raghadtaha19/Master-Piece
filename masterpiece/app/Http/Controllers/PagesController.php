@@ -31,6 +31,9 @@ class PagesController extends Controller
     public function services(){
         return view('pages.services');
     }
+    // public function checkout(Request $request){
+    //     return view('pages.paypal');
+    // }
    
    
     public function register(){

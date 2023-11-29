@@ -57,7 +57,7 @@ Categories list
                   @foreach ($categories as $category)
                   <td>{{ $i }}</td>
                   <td>{{ $category->name }}</td>
-                  <td><img src="{{ asset($category->image) }}" alt="" width="100px" height="100px"></td>  
+                  <td><img src="{{ asset('images/' .$category->image) }}" alt="" width="100px" height="100px"></td>  
                     
                   <td class="project-actions">
                     <div style="margin-bottom: 5px; width: 100px;"> <!-- Adjust the width as needed -->

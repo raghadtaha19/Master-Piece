@@ -42,7 +42,14 @@
         </div>
     </div>
 <!-- Header End -->
-    @include('pages_layouts.search')
+    {{-- @include('pages_layouts.search') --}}
+    
+    <!-- Search Start -->
+<div class="container-fluid bg-primary " style="padding: 35px;">
+</div>
+
+<!-- Search End -->
+
 
 
 
@@ -62,7 +69,7 @@
                             href="{{ route('category.lands', ['category' => $item->name]) }}">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">
-                                    <img class="img-fluid" src="{{ asset($item->image) }}" alt="Icon">
+                                    <img class="img-fluid" src="{{ asset('images/' .$item->image) }}" alt="Icon">
                                 </div>
                                 <h6>{{ $item->name }}</h6>
                                 <span class="arrow-icon" style="display: inline-block;color:#00B98E;font-size: 30px;">&rarr;</span>

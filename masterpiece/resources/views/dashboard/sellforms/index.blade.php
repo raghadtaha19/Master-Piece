@@ -42,11 +42,11 @@
 
                     <div class="card">
 
-                        <div class="card-header">
+                        {{-- <div class="card-header">
                             <a class="btn btn-primary btn-sm float-left" href="{{ route('sellforms.create') }}">
                                 <i class="fas fa-plus"></i> Add New Sell Form
                             </a>
-                        </div>
+                        </div> --}}
                         <!-- /.card-header -->
                         <div class="card-body">
                            
@@ -91,13 +91,13 @@
                                                 <td>{{ $sellform->user->email }}</td>
                                                 <td>pending</td>
                                                 <td class="project-actions">
-                                                    <div style="margin-bottom: 5px;">
+                                                    {{-- <div style="margin-bottom: 5px;">
                                                         <a class="btn btn-info btn-sm"
                                                             href="{{ route('sellforms.edit', $sellform->id) }}"
                                                             style="width: 100%;">
                                                             <i class="fas fa-pencil-alt"></i> Edit
                                                         </a>
-                                                    </div>
+                                                    </div> --}}
                                                     <div style="margin-bottom: 5px;">
                                                         <form action="{{ route('sellforms.destroy', $sellform->id) }}"
                                                             method="POST" style="display: inline;">
