@@ -29,13 +29,13 @@
         <!-- Header End -->
 
 
-        {{-- @include('pages_layouts.search') --}}
         <!-- Search Start -->
         <div class="container-fluid bg-primary " style="padding: 35px;">
         </div>
-
+        <br><br><br><br>
         <!-- Search End -->
-
+        
+       
 
         <!-- About Start -->
         <div class="container-xxl py-5">
@@ -63,14 +63,18 @@
         <!-- About End -->
 
 
-
+        <div style="display:flex;justify-content:center;align-items:center">
+            <video width="70%" height="auto" controls autoplay muted >
+                <source src="images\landi.mp4" type="video/mp4">
+            </video>
+        </div>
 
 
         <!-- Team Start -->
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Owner Story</h1>
+                    <h1 class="mt-3">Owner Story</h1>
 
                 </div>
                 <div class="row g-4">
@@ -104,7 +108,7 @@
                         The vast database of listings, combined with advanced search filters, made it effortless to discover
                         the ideal piece of land.
 
-                        The website's success was not just attributed to its extensive listings; it was the team behind it
+                        {{-- The website's success was not just attributed to its extensive listings; it was the team behind it
                         that truly made the difference. The dedicated experts provided personalized assistance, guiding
                         users through the entire process, from browsing to closing the deal. <br> <br> Their expertise and
                         unwavering commitment to customer satisfaction set them apart from the competition.
@@ -113,7 +117,8 @@
                         forged, ensuring a diverse range of high-quality land options. Whether it was a sprawling
                         countryside estate or a small plot in the heart of the city, the website had something for everyone.
 
-                        With each successful transaction, dreams became reality. </p>
+                        With each successful transaction, dreams became reality.  --}}
+                    </p>
                 </div>
             </div>
         </div>

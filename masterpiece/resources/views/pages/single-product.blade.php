@@ -29,7 +29,12 @@
     </div>
     <!-- Header End -->
 
-    @include('pages_layouts.search')
+       <!-- Search Start -->
+<div class="container-fluid bg-primary " style="padding: 35px;">
+</div>
+
+<!-- Search End -->
+<br><br><br>
 
 
 
@@ -44,16 +49,20 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active" style="border-radius:50px">
-                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="First slide">
+                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="First slide"
+                            width="100px" height="350px">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Second slide">
+                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Second slide"
+                            width="100px" height="350px">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Third slide">
+                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Third slide"
+                            width="100px" height="350px">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Fourth slide">
+                        <img class="d-block w-100" src="{{ asset('images/' . $landcard->image) }}" alt="Fourth slide"
+                            width="100px" height="350px">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -99,24 +108,31 @@
                     </div>
                     <br><br>
                     <br><br>
-                    <form method="post" action="{{ route('reserveAndRedirect', ['id' => $landcard->id]) }}"
-                        id="reservation-form">
-                        @csrf
-                        <input type="hidden" name="reservation_date" id="reservation_date" required>
-                        <input type="hidden" name="landcard_data" value="{{ json_encode($landcard) }}">
-                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <button type="submit" class="btn btn-primary py-3 px-5">Go to paypal</button>
-                        </div>
-                    </form>
+                    <div class="mb-4">
+                        <p class="mb-2  reservation-text">
+                            To reserve this land, please proceed to PayPal and make a payment of 20 JD.
+                        </p>
+                        <form method="post" action="{{ route('reserveAndRedirect', ['id' => $landcard->id]) }}"
+                            id="reservation-form">
+                            @csrf
+                            <input type="hidden" name="reservation_date" id="reservation_date" required>
+                            {{-- It has the required attribute, which means it must be filled out before submitting the form --}}
+                            <input type="hidden" name="landcard_data" value="{{ json_encode($landcard) }}">
+                            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                                <button type="submit" class="btn btn-primary py-3 px-5">Go to PayPal</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
     <!-- Shop Detail End -->
 
-
+    {{-- CSRF Token:
+    @csrf: Laravel directive that generates a hidden input field containing the CSRF token.
+     This is a security measure to protect against cross-site request forgery (CSRF) attacks. --}}
 
 
 @endsection
@@ -135,17 +151,3 @@
 
 
 @endsection
-{{-- <div class="d-flex pt-3">
-                        <strong class="text-dark mr-2">Share on:</strong>
-                        <div class="d-inline-flex">
-                            <a class="text-dark px-2" href="#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="text-dark px-2" href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a class="text-dark px-2" href="#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div> --}}

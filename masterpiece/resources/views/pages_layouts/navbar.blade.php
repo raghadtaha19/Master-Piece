@@ -15,6 +15,8 @@
             <div class="navbar-nav ms-auto">
                 <a href="{{ route('home') }}"
                     class="nav-item nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
+                <a href="{{ route('filterlands') }}"
+                    class="nav-item nav-link {{ request()->routeIs('filterlands') ? 'active' : '' }}">All Lands</a>
                 <a href="{{ route('sellform') }}"
                     class="nav-item nav-link {{ request()->routeIs('sellform') ? 'active' : '' }}">Sell Form</a>
                 <a href="{{ route('services') }}"

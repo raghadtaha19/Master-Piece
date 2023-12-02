@@ -19,6 +19,7 @@ class LandImagesController extends Controller
         $landimages=LandImages::get();
         return view('dashboard.landimages.index', compact('landimages'));
     }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -75,14 +76,8 @@ class LandImagesController extends Controller
 
         }
         
-    
-    
-    
-        // dd($landimages); // Before save
-
         $landimages->save();
         
-        // dd($landimages); // After save
         
     
         return redirect()->route('landimages.index')->with('success', 'Land Images uploaded successfully.');

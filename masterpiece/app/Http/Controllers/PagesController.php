@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\LandCard;
 use App\Models\LandReservation;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 
 class PagesController extends Controller
@@ -31,10 +30,7 @@ class PagesController extends Controller
     public function services(){
         return view('pages.services');
     }
-    // public function checkout(Request $request){
-    //     return view('pages.paypal');
-    // }
-   
+
    
     public function register(){
         return view('pages.register');
@@ -43,30 +39,36 @@ class PagesController extends Controller
         return view('pages.login');
         
     }
+   
     
-    
-    public function singlepage($productid)
+    public function singlepage($product)
 {
-    
-    $landcard = LandCard::findOrFail($productid); 
-    return view('pages.single-product', ['landcard' => $landcard]);
+    $landcard = LandCard::findOrFail($product); 
+    $landimages = $landcard->landImages;//for slider images
+    return view('pages.single-product', compact('landimages', 'landcard'));
 }
+//The $productid parameter in the singlepage method is a placeholder for the dynamic segment in the URL.
+//This is a common pattern in Laravel routes where you can define routes with parameters,
+//and these parameters are passed to the corresponding controller method.
+    
 
 public function reservation(){
     return view('pages.reservation');
 }
-public function filterlands(Request $request)
-{// Check the request data
-// dd($request->all());
 
-    // Get filter parameters from the request
+
+public function filterlands(Request $request)
+{
+    $landcards=LandCard::get();
+
+    //Retrieves filter parameters from the request.
     $area = $request->input('area');
     $governorate = $request->input('governorate');
     $minArea = $maxArea = 0;
-    $cat_name=$request->input('category_name');
 
-    if ($area !== "") {
-        
+
+//Check if the area parameter is not empty and contains a hyphen:
+    if ($area !== "") { 
         if (strpos($area, '-') !== false) {
             // Split the string into an array using the hyphen as the delimiter
             list($minArea, $maxArea) = explode('-', $area);
@@ -78,9 +80,8 @@ public function filterlands(Request $request)
     }
     
 
-    // dd($minArea);
+//Create a query builder instance for the 'land_cards' table
     $query = DB::table('land_cards');
-
     if ($minArea != 0) {
         $query->whereBetween('area', [$minArea, $maxArea]);
     }
@@ -88,21 +89,21 @@ public function filterlands(Request $request)
     if (!empty($governorate)) {
         $query->where('governorate', $governorate);
     }
-    if (!empty($cat_name)) {
-        $query->where('land_type', $cat_name);
-    }
-    
-// dd($query);
-    $landcards = $query->paginate(6);
+   
+    //Executes the query and retrieves the filtered land cards
+    $landcards = $query->get();
     $itemCount = $query->count();
+
+    
+
             if( $itemCount==0){
                 $message = "No lands found .";
-                return view('pages.categories', compact('landcards', 'itemCount',  'message'));
+                return view('pages.all_lands', compact('landcards','message'));
             
             }else
         
         {
-            return view('pages.categories', compact('landcards','itemCount'));
+            return view('pages.all_lands', compact('landcards','itemCount'));
         }
 }
 

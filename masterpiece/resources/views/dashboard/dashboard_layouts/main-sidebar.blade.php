@@ -54,18 +54,12 @@
             <p>Land Images</p>
           </a>
         </li>
-        {{-- <li class="nav-item">
+        <li class="nav-item">
           <a href="{{ url('dashboard/sellforms') }}" class="nav-link">
             <i class="fas fa-handshake nav-icon"></i>
             <p>Sell Forms</p>
           </a>
-        </li> --}}
-        {{-- <li class="nav-item">
-          <a href="{{ url('dashboard/addresses') }}" class="nav-link">
-            <i class="fas fa-map-marked-alt nav-icon"></i>
-            <p>Addresses</p>
-          </a>
-        </li> --}}
+        </li>
         <li class="nav-item">
           <a href="{{ url('dashboard/landreservations') }}" class="nav-link">
             <i class="fas fa-hands-helping nav-icon"></i>

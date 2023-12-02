@@ -241,8 +241,8 @@
                         <label for="description">Description:</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="description" name="description" placeholder="Enter description .." value="{{ old('description') }}"
-                             autofocus></textarea>
+                         <input type="text" id="description" name="description" placeholder="Enter description .." value="{{ old('description') }}"
+                             autofocus>
                         @error('description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -254,8 +254,8 @@
                         <label for="additionalinfo">Additional Info:</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="additionalinfo" name="additionalinfo" placeholder="Enter additional information .."
-                            value="{{ old('additionalinfo') }}"  autofocus></textarea>
+                         <input type="text" id="additionalinfo" name="additionalinfo" placeholder="Enter additional information .."
+                            value="{{ old('additionalinfo') }}"  autofocus>
                         @error('additionalinfo')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -339,15 +339,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
             integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script>
-            // Check if the success alert element exists and display SweetAlert 2
-            var successAlert = document.getElementById('success-alert');
-            if (successAlert) {
-                Swal.fire({
-                    text: "Your Message has been sent successfully",
-                    icon: "success"
-                });
-            }
-        </script>
+      
 
     @endsection

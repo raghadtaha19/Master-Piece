@@ -17,14 +17,11 @@ class LandCard extends Model
         'district',
         'area',
         'sell_form_id',
-        // 'status_from_user',
-        // 'status_from_admin',
-    ];
-    protected $attributes = [
-        'status_from_user' => 0, // or any other default value you prefer
-        'status_from_admin'=> 0,
+       'description',
+       'additional_information'
 
     ];
+   
     public function sellForm()
 {
     return $this->belongsTo(SellForm::class, 'sell_form_id');
@@ -33,6 +30,11 @@ class LandCard extends Model
     public function landReservations()
     {
         return $this->hasMany(LandReservation::class);
+    }
+
+    public function landImages()
+    {
+        return $this->hasMany(LandImages::class, 'land_card_id');
     }
  
 

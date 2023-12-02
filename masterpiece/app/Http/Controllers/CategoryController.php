@@ -26,7 +26,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string:100',
-            'image' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,gif,bmp,svg,webp',
         ]);
 
     $categories = new Category();
@@ -68,6 +68,10 @@ class CategoryController extends Controller
 
     public function update(Request $request,$id)
     {
+        $request->validate([
+            'name' => 'string:100',
+            'image' => 'image|mimes:jpeg,png,gif,bmp,svg,webp',
+        ]);
        
         $categories = Category::findOrFail($id);
 

@@ -65,7 +65,6 @@ class SellFormController extends Controller
             'description' => 'required',
             'user_email' => 'required',
             'additional_information' => 'required',
-            // 'user_id' => auth()->id(), 
         ]);
 
         // Find the selected category
@@ -81,7 +80,6 @@ class SellFormController extends Controller
     }
 
         if ($selectedCategory && $user) {
-            // Create the SellForm record
             SellForm::create([
                 'ID_number' => $request->input('ID_number'),
                 'land_type' => $selectedCategory->name,
@@ -144,14 +142,7 @@ class SellFormController extends Controller
         
 
         $selectedCategory = Category::find($request->input('land_type'));
-        // $user = User::find($request->input('user_id'));
-        // $user = User::where('email', $request->input('user_id'))->first();
-    
-        // if ($user) {
-        //     $userId = $user->id;
-        // } else {
-        //     $userId = null; 
-        // }
+        
 
         if ($selectedCategory) {
             $sellform = SellForm::findOrFail($id);
@@ -172,7 +163,6 @@ class SellFormController extends Controller
 
             return redirect()->route('sellforms.index')->with('success', 'Sell Form updated successfully');
         } else {
-            // Handle the case where the selected category or user does not exist
             return redirect()->route('sellforms.edit', $id)->with('error', 'Selected category or user does not exist.');
         }
     }

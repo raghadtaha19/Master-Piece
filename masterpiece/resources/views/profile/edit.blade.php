@@ -65,6 +65,16 @@
                     @include('profile.partials.update-password-form')
                 </div>
             </div>
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg mt-4">
+                <div class="max-w-xl">
+                    <h2 class="text-lg font-medium text-gray-900">Your Reserved Land</h2>
+                    <form action="{{ route('land', ['id' => auth()->id()]) }}" method="post">
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150">My Reserved Land</button>
+                    </form>
+                </div>
+            </div>
     
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg mt-4">
                 <div class="max-w-xl">
@@ -73,11 +83,8 @@
             </div>
         </div>
     </div>
-    <form action="{{ route('land', ['id' => auth()->id()]) }}" method="post">
-        @csrf
-        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-        <button type="submit">Submit</button>
-    </form>
+    
+    
     
     
     

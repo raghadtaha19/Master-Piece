@@ -3,6 +3,8 @@
 @section('title', 'Contact Page')
 
 @section('css')
+<link href="{{ asset('pages_assets/css/style.css') }}" rel="stylesheet">
+
 @endsection
 
 @section('content')
@@ -125,7 +127,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                    <button class="btn btn-primary w-100 py-3 custom-margin" type="submit">Send Message</button>
                                 </div>
                             </div>
                         </form>

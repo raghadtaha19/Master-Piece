@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('land_card_id');
             $table->foreign('land_card_id')->references('id')->on('land_cards')->onDelete('cascade')->onUpdate('cascade');
-            // $table->string('transaction_date');
             $table->bigInteger('transaction_price')->nullable();
             $table->timestamps();
             

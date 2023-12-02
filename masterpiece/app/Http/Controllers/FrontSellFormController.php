@@ -51,7 +51,6 @@ class FrontSellFormController extends Controller
             'phone.regex' => 'The phone number must start with 079, 077, or 078 followed by 7 digits.',
             'idNumber.regex'=>'The id number must be 10 digits'
         ]);
-        // Session::flashInput($validatedData);
 
 
         $relativeImagePath1 = null;
@@ -107,39 +106,11 @@ class FrontSellFormController extends Controller
             'sell_form_id'=>$sellforms->id,
         ]);
 
-        Alert::success('Congrats','Your Message has been sent successfully');
+        Alert::success('Congrats','Your land submission was successful! Once approved by our admin, your land will be displayed on our website. Thank you for choosing us!');
         return redirect()->back();
 
 
        
     }
-    // public function storeImage(Request $request)
-    // {
-    //     $landimages = new LandImages();
-    
-    //     $request->validate([
-    //         'sell_form_id' => 'required|exists:sell_forms,id',
-    //     ]);
-    
-    //     $sell_form_id = $request->input('sell_form_id');
-    //     $landimages->sell_form_id = $sell_form_id;
-    
-    //     $allowedColumns = ['image1', 'image2', 'image3', 'image4'];
-        
-    //     foreach ($allowedColumns as $column) {
-
-    //         if ($request->hasFile($column)) {
-    //             $image = $request->file($column);
-    //             $imageName = time() . '_' . $column . '.' . $image->getClientOriginalExtension();
-                
-    //             $image->move(public_path('images'), $imageName);
-    
-    //             $landimages->$column = $imageName;
-    //         }
-    //     }
-        
-    
-    //     $landimages->save();
-    //     return redirect()->route('landimages.index')->with('success', 'Land Images uploaded successfully.');
-    // }
+ 
 }    

@@ -24,22 +24,6 @@ use App\Http\Controllers\EmailController;
 Route::view('/login', 'auth.login')->name('login');
 
 
-// Route::middleware(['web', 'guest'])->group(function () {
-//     // Authentication Routes
-//     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-//     Route::post('/login', [LoginController::class, 'login']);
-//     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-//     // ... other authentication routes
-
-//     // Registration Routes
-//     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-//     Route::post('/register', [RegisterController::class, 'register']);
-//     // ... other registration routes
-// });
-
-
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -57,28 +41,30 @@ require __DIR__.'/auth.php';
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Dashboard
+Route::middleware(['adminMiddleWare'])->group(function () {
+    Route::resource('dashboard/users', UserController::class);
+    Route::resource('dashboard/admins', AdminController::class);
+    Route::resource('dashboard/categories', CategoryController::class);
+    Route::resource('dashboard/sellforms', SellFormController::class);
+    Route::resource('dashboard/addresses', AddressController::class);
+    Route::resource('dashboard/landimages', LandImagesController::class);
+    Route::resource('dashboard/landcards', LandCardController::class);
+    Route::resource('dashboard/landreservations', LandReservationController::class);
+    Route::resource('dashboard/transactions', TransactionController::class);
+    Route::get('main/dashboard', [CustomAuthController::class, 'sidebar']);
+});
 
-Route::resource('dashboard/users', UserController::class)->middleware('adminMiddleWare');
-Route::resource('dashboard/admins', AdminController::class)->middleware('adminMiddleWare');
-Route::resource('dashboard/categories', CategoryController::class)->middleware('adminMiddleWare');
-Route::resource('dashboard/sellforms', SellFormController::class)->middleware('adminMiddleWare');
-Route::resource('dashboard/addresses', AddressController::class)->middleware('adminMiddleWare');
-Route::resource('dashboard/landimages', LandImagesController::class)->middleware('adminMiddleWare');
-Route::resource('dashboard/landcards', LandCardController::class)->middleware('adminMiddleWare');
-Route::resource('dashboard/landreservations', LandReservationController::class)->middleware('adminMiddleWare');
-Route::resource('dashboard/transactions', TransactionController::class)->middleware('adminMiddleWare');
-Route::post('/sellforms/{id}/accept', [SellFormController::class,'accept'])->name('sellforms.accept');
-Route::post('/landreservation/{id}/deal', [LandReservationController::class,'deal'])->name('landreservations.deal');
-Route::match(['get', 'post'],'profile/land/{id}',  [LandCardController::class, 'profile_land'])->name('land');
 
 Route::get('/dashboard_login', function () {
     return view('dashboard.dashboard_login');
 })->name('dashboard.dashboard_login');
 
 Route::post('welcome/dashboard', [CustomAuthController::class, 'loginUser'])->name('dashlog');
-Route::get('main/dashboard', [CustomAuthController::class, 'sidebar'])->middleware('adminMiddleWare');
 Route::get('dashboard_logout', [CustomAuthController::class, 'logout']);
 
+Route::match(['get', 'post'],'profile/land/{id}',  [LandCardController::class, 'profile_land'])->name('land');
+Route::post('/sellforms/{id}/accept', [SellFormController::class,'accept'])->name('sellforms.accept');
+Route::post('/landreservation/{id}/deal', [LandReservationController::class,'deal'])->name('landreservations.deal');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -89,11 +75,18 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/services', [PagesController::class, 'services'])->name('services');
 Route::get('/singleland/{product}', [PagesController::class, 'singlepage'])->name('singlepage');
 Route::get('/category/{category}', [FrontCategoryController::class, 'showLandsByCategory'])->name('category.lands');
+//dynamic parameter {category} in the URL.
 Route::get( '/sellform', [FrontSellFormController::class, 'create'])->name('sellform');
 Route::match(['get', 'post'], '/sellform/store', [FrontSellFormController::class, 'store'])->name('sellform.store');
 Route::get( '/reservation', [PagesController::class, 'reservation'])->name('reservation');
 Route::match(['get', 'post'],'landreservations/reserveAndRedirect/{id}', [LandReservationController::class, 'reserveAndRedirect'])->name('reserveAndRedirect');
-Route::post('/filterlands', [PagesController::class, 'filterlands'])->name('filterlands');
+Route::match(['get', 'post'],'/filterlands', [PagesController::class, 'filterlands'])->name('filterlands');
+//in line83 is as 85+86
+//
+//The Route::match method in Laravel allows you to define a route that responds to multiple HTTP methods, such as GET and POST
+// using Route::match provides a more concise way to express that the same logic applies to both HTTP methods.
+// Route::get('/filterlands', [PagesController::class, 'filterlands'])->name('filterlands');
+// Route::post('/filterlands', [PagesController::class, 'filterlands']);
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 // google

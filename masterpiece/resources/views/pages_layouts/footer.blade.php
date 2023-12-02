@@ -3,7 +3,7 @@
      <div class="container py-5">
          <div class="row g-5">
              <div class="col-lg-3 col-md-6">
-                 <h5 class="text-white mb-4">Get In Touch</h5>
+                 <h5 class="text-white mb-4 footer-titles">Get In Touch</h5>
                  <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Street, Irbid, Jordan</p><br>
                  <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>0795098086</p><br>
                  <p class="mb-2"><i class="fa fa-envelope me-3"></i>raghad@gmail.com</p><br>
@@ -19,14 +19,14 @@
                  </div>
              </div>
              <div class="col-lg-3 col-md-6">
-                 <h5 class="text-white mb-4">Quick Links</h5>
+                 <h5 class="text-white mb-4 footer-titles">Quick Links</h5>
                  <a class="btn btn-link text-white-50" href="{{ route('home') }}">Home</a><br>
                  <a class="btn btn-link text-white-50" href="{{ route('about') }}">About Us</a><br>
                  <a class="btn btn-link text-white-50" href="{{ route('contact') }}">Contact Us</a><br>
                  <a class="btn btn-link text-white-50" href="{{ route('services') }}">Our Services</a><br>
              </div>
              <div class="col-lg-3 col-md-6">
-                 <h5 class="text-white mb-4">Photo Gallery</h5>
+                 <h5 class="text-white mb-4 footer-titles">Photo Gallery</h5>
                  <div class="row g-2 pt-2">
                      <div class="col-4">
                          <img class="img-fluid rounded bg-light p-1" src="{{ asset('images\1.jpg') }}" style="width: 90px;height:90px" alt="Natural-image">

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('image4');
             $table->bigInteger('sell_form_id')->unsigned()->nullable();
             $table->foreign('sell_form_id')->references('id')->on('sell_forms')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('land_card_id')->unsigned()->nullable();
+            $table->foreign('land_card_id')->references('id')->on('land_cards')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
 

@@ -23,10 +23,8 @@ return new class extends Migration
             $table->string('area');
             $table->bigInteger('sell_form_id')->unsigned()->nullable();
             $table->foreign('sell_form_id')->references('id')->on('sell_forms')->onDelete('cascade')->onUpdate('cascade');
-            $table->tinyInteger('status_from_user');
-            $table->tinyInteger('status_from_admin');
-            // $table->text('description');
-            // $table->text('additional_information');
+            $table->text('description')->nullable();
+            $table->text('additional_information')->nullable();
             $table->timestamps();
         });
 

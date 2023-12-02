@@ -23,11 +23,6 @@
             </div> 
             <div class="col-md-6 animated fadeIn">
                 <div class="owl-carousel header-carousel">
-                    {{-- <div class="owl-carousel-item">
-                        <video class="img-fluid" autoplay>
-                            <source src="{{ asset('images\video (2160p).mp4') }}" type="video/mp4">
-                        </video>
-                    </div> --}}
                     <div class="owl-carousel-item">
                         <img class="img-fluid" src="{{ asset('images/1.jpg') }}" alt="">
                     </div>
@@ -42,8 +37,9 @@
         </div>
     </div>
 <!-- Header End -->
-    {{-- @include('pages_layouts.search') --}}
     
+
+
     <!-- Search Start -->
 <div class="container-fluid bg-primary " style="padding: 35px;">
 </div>
@@ -202,7 +198,9 @@
                         @endforeach
                     </div>
                 </div>
+
             </div>
+
             <br><br><br>
 
             <!-- Display pagination links -->

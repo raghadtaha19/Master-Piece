@@ -21,8 +21,6 @@ return new class extends Migration
             $table->foreign('land_card_id')->references('id')->on('land_cards')->onDelete('cascade')->onUpdate('cascade');
             $table->string('status')->nullable();
             $table->timestamp('reservation_date');
-            $table->string('available_land_message')->nullable();
-            $table->string('sold_land_message')->nullable();
             $table->timestamps();
         });
 

@@ -26,10 +26,7 @@
 						Sign In With
 					</span>
 
-					<a href="#" class="btn-face m-b-20">
-						<i class="fa fa-facebook-official"></i>
-						Facebook
-					</a>
+					
 
 					<a href="#" class="btn-google m-b-20">
 						<img src="{{ asset('pages_assets/images/icons/icon-google.png') }}" alt="GOOGLE">
